@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="Sign_up.css">
+</head>
+<body>
+    <div class="Sign_up_page">
+        <img src="로고누끼.png">
+        <p>회 원 가 입</p>
+        <input type = "text" class="signup_text"  placeholder="  이름을 입력해주세요."><br/>
+        <input type = "text" class="signup_text" placeholder="  이메일을 입력해주세요."><br/>
+        <input type = "text" class="signup_text"  placeholder="  아이디를 입력해주세요."><br/>
+        <input type = "password" class="signup_text"  placeholder="  비밀번호를 입력해주세요."><br/>
+        <input type = "password" class="signup_text"  placeholder="  비밀번호를 다시 입력해주세요."><br/>
+        <label class="checkbox-container">
+            <input type="checkbox"> 동의안하면회원가입못한다네요
+        </label><br/>
+        <p><button id= "myButton" class="ok_button">완료</button></p>
+        <script>
+            const button = document.getElementById('myButton');
+
+            button.addEventListener('mousedown', function() {
+                button.classList.add('clicked');
+            });
+
+            button.addEventListener('mouseup', function() {
+                button.classList.remove('clicked');
+            });
+
+            button.addEventListener('mouseout', function() {
+                button.classList.remove('clicked');
+            });
+        </script>
+    </div>
+</body>
+</html>
