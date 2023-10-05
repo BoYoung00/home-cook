@@ -15,58 +15,39 @@
     request.setCharacterEncoding("UTF-8");
 
     PrintWriter script = response.getWriter();
-    String id = null;
-    String password = null;
-    String name = null;
-    String email = null;
+    String id = (String) request.getParameter("id");;
+    String password = (String) request.getParameter("password");
+    String name = (String) request.getParameter("name");
+    String email = (String) request.getParameter("email");
 
-    if (request.getParameter("id") != null) {
-        id = (String) request.getParameter("id");
-    }
-    if (request.getParameter("password") != null) {
-        password = (String) request.getParameter("password");
-    }
-    if (request.getParameter("name") != null) {
-        name = (String) request.getParameter("name");
-    }
-    if (request.getParameter("email") != null) {
-        email = (String) request.getParameter("email");
-    }
+    UserDao dao = new UserDao();
+    UserDto dto = new UserDto(id, password, name, email);
 
-    if (id.equals("") || password.equals("") || name.equals("") || email.equals("")  ) {
-        script.println("<script>");
-        script.println("alert('입력이 안된 사항이 있습니다.')");
-        script.println("history.back()");
-        script.println("</script>");
-    } else {
-        UserDao dao = new UserDao();
-        UserDto dto = new UserDto(id, password, name, email);
+    List<UserDto> list = dao.selete(id);
 
-        List<UserDto> list = dao.selete(id);
+    if (list.isEmpty()) {
 
-        if (list.isEmpty()) {
+        int insert = dao.insert(dto);
 
-            int insert = dao.insert(dto);
-
-            if (insert == 1) {
-                script.println("<script>");
-                script.println("alert('회원가입에 성공하셨습니다.')");
-                script.println("location.href='Sign_up.jsp'");
-                script.println("</script>");
-                script.close();
-            } else {
-                script.println("<script>");
-                script.println("alert('회원가입에 실패하였습니다. 다시 시도해주세요.')");
-                script.println("history.back()");
-                script.println("</script>");
-                script.close();
-            }
+        if (insert == 1) {
+            script.println("<script>");
+            script.println("alert('회원가입에 성공하셨습니다.')");
+            script.println("location.href='Sign_up.jsp'");
+            script.println("</script>");
+            script.close();
         } else {
             script.println("<script>");
-            script.println("alert('아이디가 이미 존재합니다.')");
+            script.println("alert('회원가입에 실패하였습니다. 다시 시도해주세요.')");
             script.println("history.back()");
             script.println("</script>");
             script.close();
         }
+    } else {
+        script.println("<script>");
+        script.println("alert('아이디가 이미 존재합니다.')");
+        script.println("history.back()");
+        script.println("</script>");
+        script.close();
+
     }
 %>

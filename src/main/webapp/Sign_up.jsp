@@ -86,7 +86,7 @@
            oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
 
     <input type="text" class="signup_text" id="email" name="email" placeholder="  이메일을 입력해주세요." size="50" required
-           oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
+           oninvalid="this.setCustomValidity('올바른 이메일을 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
 
     <input type="text" class="signup_text" id="id" name="id" placeholder="  아이디를 입력해주세요." size="20" required
            oninvalid="this.setCustomValidity('아이디를 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
@@ -95,7 +95,7 @@
            oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
 
     <input type="password" class="signup_text" id="rePassword" placeholder="  비밀번호를 다시 입력해주세요." size="20" required
-           oninvalid="this.setCustomValidity('비밀번호 확인을 해주세요.')" oninput="this.setCustomValidity('')"><br/>
+           oninvalid="this.setCustomValidity('비밀번호가 일치하지 않습니다.')" oninput="this.setCustomValidity('')"><br/>
 
     <label class="checkbox-container">
       <input type="checkbox"> 동의안하면회원가입못한다네요
@@ -169,8 +169,8 @@
     }
 
     // main
-    ClickSetup();
     ValidationMain();
+    ClickSetup();
 
   </script>
 </div>
