@@ -1,4 +1,13 @@
-class UserDto extends DTO {
+//최초 작성자 : 김보영
+//최초 작성일 : 2023.10.03.
+//최초 변경일 : 2023.10.05.
+//목적 : 사용자 정보 DTO
+//개정 이력 : 김보영, 2023.10.05.(var. 01)
+//저작권 : 없음
+
+package User;
+
+public class UserDto {
     private int userNumber;
     private String userID;
     private String userPasswerd;
