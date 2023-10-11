@@ -85,6 +85,27 @@ public class UserDao {
         return list;
     }
 
+    public int login(String id, String pw) {
+        String sql = "SELECT userPassword FROM user WHERE userId=?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                if (rs.getString("userPassword").equals(pw))
+                    return 1; // 로그인 성공
+                else
+                    return 0; // 비밀번호 불일치
+            }
+            return -1; // 아이디 없음
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -2; // DB 오류
+    }
+
     public void dbClose() throws SQLException {
         if (conn != null)
             conn.close();

@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
   <title>회원가입</title>
   <link rel="stylesheet" href="Sign_up.css">
 
   <style>
     *{
-
+      font-family: 'Hi Melody', cursive;
     }
+
     .Sign_up_page{
       margin: auto;
       width: 400px;
@@ -35,6 +37,7 @@
     }
 
     .signup_text{
+      font-size: 16px;
       margin-top: 35px;
       margin-left: 20px;
       border: 0.5px solid #dc143c;
@@ -98,7 +101,7 @@
            oninvalid="this.setCustomValidity('비밀번호가 일치하지 않습니다.')" oninput="this.setCustomValidity('')"><br/>
 
     <label class="checkbox-container">
-      <input type="checkbox"> 동의안하면회원가입못한다네요
+      <input type="checkbox"> 회원가입 개인정보 수집 및 이용 동의
     </label><br/>
     <p><input type="submit" id= "myButton" class="ok_button" value="확인"></p>
   </form>
