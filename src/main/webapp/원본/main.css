@@ -1,0 +1,320 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: #000;
+}
+
+/* 글씨들 조정정 */
+h1{
+    font-size: 48px;
+    font-weight: 100;
+}
+
+.contents1{
+    font-size: 20PX;
+    font-weight: lighter;
+}
+
+.contents3{
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.contents1_bold{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/*  상단 탭 (고정) */
+.LOGO{
+    width: 200px;
+    height: 90px;
+
+}
+
+.header_bg{
+    background-color: #000; 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.header{
+    display: flex;
+    width:80%;
+    margin: auto;
+    height: 86px;
+}
+
+.nav{
+    display: flex;
+    justify-content: flex-end;
+    line-height: 86px;
+    width: calc(1280px - 300px);
+}
+
+.nav > li {
+    margin-left:64px ;
+}
+
+.nav > li >a {
+    color: #fff;
+}
+
+/* 상단 인트로 */
+.intro_bg{
+    width: 100%;
+    height: 718px;
+    background-color: lightblue;
+    padding-top: 86px;
+
+}
+
+.intro_text{
+    width: 100%;
+    margin: 231px auto 231px auto;
+    text-align: center;
+}
+
+
+
+.intro_text > h1 {
+    color: #fff;
+}
+
+
+/* 생활비 소개글 */
+.amount{
+    position: relative;
+    top: -66px;
+    display: flex;
+    width: 1280px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.amount>li{
+    flex: 1;
+    height: 132px;
+}
+
+.amount> li > div{
+    text-align: center; 
+    margin-top: 37px;
+    height: 57px;
+}
+
+.amount > li > div:not(:last-child){
+    border-right: 1px solid #E1E1E1;   
+
+}
+
+.result{
+    font-size: 24PX;
+}
+
+
+
+
+/* food Preview */
+
+.food{
+    height: 601px;
+    margin-top: -132px;
+    background: #f1f3f3;
+}
+
+.food > h1{
+    padding-top: 116px;
+    text-align: center;
+}
+
+.show_more{
+    width: 100px;
+    height: 30px;
+    float: right;
+}
+
+
+.Preview{
+    white-space: nowrap; /* 요소가 가로로 나란히 정렬되도록 설정 */
+    display: flex;
+    width: 1280px;
+    height: 302px;
+    margin: auto;
+}
+
+.Preview > .imgHoverEvent{
+    flex: 1;
+    height: 302px;  
+    margin-top: 49px;
+    background: #000;
+    text-align: center;
+    position: relative;  
+    overflow: hidden; 
+    display: inline-block; 
+}
+
+.Preview > .imgHoverEvent:not(:last-child){
+    margin-right: 20px;
+}
+
+.imgHoverEvent .imgBox{
+    width: 210px; 
+    text-align: center; 
+    background:url(http://gahyun.wooga.kr/portfolio/triple/resources/img/city00.jpg) 
+    no-repeat 50% 50%; 
+    background-size: auto 100%;
+    margin: auto;
+    letter-spacing: -1;
+    padding-top: 5px;
+    color: #fff;
+
+}
+.imgHoverEvent .hoverBox{
+    width: 441px;
+    height: 150px;
+    line-height: 30px;
+    position: relative;
+    bottom: -154px;
+}
+/* hoverbox 안에 제목과 내용 */
+.hoverBox p.p1{
+    text-align:center; 
+    font-size:18px;
+    color: #fff;
+    margin-right: 20px;
+}
+.hoverBox p.p2{
+    color: #fff;
+    text-align:center; 
+    margin-top: 20px;
+    margin-right: 20px;
+
+}
+/* hover 이벤트 */
+.event1 .hoverBox{
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 5%,rgba(255,255,255,1) 90%); 
+    transform: translateY(60%); 
+    transition: 0.5s;
+}
+.event1:hover .hoverBox{
+    transform: translateY(0);
+}
+
+
+
+.dessert{
+    height: 601px;
+    background: #fff;
+}   
+
+.dessert > h1{
+    padding-top: 60px;
+    text-align: center;
+}
+
+.drink{
+    height: 601px;
+    background: #f1f3f3;
+    margin-top: -60px;
+    margin-bottom: -20px;
+}   
+
+.drink > h1{
+    padding-top: 60px;
+    text-align: center;
+}
+
+
+/* main_text1 */
+
+.main_text1 > h1{
+   padding-top: 50px;
+   text-align: center; 
+}
+
+.main_text1 > .contents1{
+    text-align: center;
+}
+
+.service{
+    width: 1280px;
+    display: flex;
+    margin: 49px auto;
+    height: 427px;
+    /* background: skyblue; */
+}
+
+.service > .contents2{
+    padding: 20px;
+}
+
+.service > .contents2 >h2{
+    margin-bottom: 27px;
+}
+
+/* main_text2 */
+
+.main_text2{
+    width: 100%;
+    height: 418px;
+    background-image: url("image/마스크\ 그룹\ 1.png");
+}
+
+.main_text2 > ul {
+    display: flex;
+    padding-top: 138px;
+}
+
+.main_text2 > ul > li{
+    flex: 1;
+    text-align: center;
+}
+
+.main_text2 > ul > li > div,
+.main_text2 > ul > li > div > h1{
+  color: #fff;
+}
+
+
+.more2 {
+    width: 220px;
+    height: 40px;
+    border: 1px solid #fff;
+    color: #fff;
+    line-height: 40px;
+    cursor: pointer;
+    margin: 16px auto;
+}
+
+
+/* footer */
+footer{
+    display: flex;
+    background: #1f1f1f ;
+    padding: 30px;
+}
+
+footer > div:first-child{
+    flex: 3;
+    text-align: center;
+    color: #fff;
+}
+
+footer > div:last-child{
+    flex: 9;
+    color: #fff;
+}
+
+.footer_logo{
+    width: 200px;
+    height: 90px;
+
+}
