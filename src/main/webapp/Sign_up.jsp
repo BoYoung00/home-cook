@@ -82,7 +82,7 @@
 </head>
 <body>
 <div class="Sign_up_page">
-  <img src="img/로고누끼.png">
+  <img src="img/logo.png">
   <p>회 원 가 입</p>
   <form action="Sign_up_action.jsp" method="post">
     <input type="text" class="signup_text" id="name" name="name" placeholder="  이름을 입력해주세요." size="50" required
