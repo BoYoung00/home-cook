@@ -1,5 +1,3 @@
-<%@ page import="javax.servlet.http.HttpServletRequest" %>
-<%@ page import="jakarta.servlet.http.HttpServletRequest" %>
 <%@ page import="java.io.File" %>
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
@@ -23,12 +21,17 @@
     int size = 10 * 1024 * 1024; //10M
 
     // 실제적 파일 업로드 처리
-    MultipartRequest multi = new MultipartRequest(request, request.getParameter("imgFile"), size, "UTF-8", new DefaultFileRenamePolicy());
+    MultipartRequest multi = new MultipartRequest(request, realPath, size, "UTF-8", new DefaultFileRenamePolicy());
 %>
 
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
 

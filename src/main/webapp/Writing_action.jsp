@@ -15,6 +15,10 @@
     request.setCharacterEncoding("UTF-8");
     PrintWriter script = response.getWriter();
 
+    String path = "/upload/image";
+    String realPath = request.getServletContext().getRealPath(path);
+    System.out.println(realPath);
+
     String userID = (String) session.getAttribute("userID");
 
     if (request.getParameter("title").isEmpty() || request.getParameter("title").isEmpty()) {
