@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="login.css">
+<%--    <link rel="stylesheet" href="login.css">--%>
     <!-- 최초 작성자 : 김예지 -->
     <!-- 최초 작성일 : 2023.10.10. -->
     <!-- 최초 변경일 : 2023.10.12. -->
@@ -37,7 +37,7 @@
             margin: auto;
         }
 
-        a{
+        .tabs a{
             text-decoration: none;
             float: left;
             border-radius: 10px 10px 0 0;
@@ -92,14 +92,14 @@
         }
 
         /* 회원가입 하러 가기 */
-        h3{
-            text-align: center;
+        #Sign_up_but {
             font-size: 20px;
+            font-weight: bold;
             text-decoration: underline;
-            margin-top: 10px;
+            color: black;
         }
 
-        h3:hover{
+        #Sign_up_but:hover, logo:hover{
             cursor: pointer;
         }
 
@@ -203,7 +203,7 @@
         <div class="panel on">
             <!-- 사용자 로그인 페이지 -->
             <form class="user" action="Login_user_action.jsp" method="post">
-                <img src="img/logo.png" alt="">
+                <img src="img/logo.png" alt="로고" class="logo">
                 <p class="login_text">사용자 로그인</p>
                 <!-- 텍스트 박스 -->
                 <input type="id" class="login_textbox" name="userId" placeholder= "  아이디를 입력해주세요." size="20" required
@@ -214,13 +214,13 @@
                 <p><button id="userLoginButton" class="ok_button">로그인</button></p>
                 <!-- 회원가입 하러 가기 -->
                 <p class="Sign_up">아직 회원이 아니시라면</p>
-                <h3 href="#" onclick="window.open('Sign_up.html')">회원가입 →</h3>
+                <p><a href="Sign_up.jsp" id="Sign_up_but">회원가입 →</a></p>
             </form>
         </div>
         <div class="panel">
             <!-- 관리자 로그인 페이지 -->
             <form class="manager" action="Manager_login_action.jsp" method="post">
-                <img src="img/logo.png " alt="">
+                <img src="img/logo.png" alt="로고" class="logo">
                 <p class="login_text">관리자 로그인</p>
                 <!-- 텍스트 박스 -->
                 <input type="id" class="login_textbox" name="managerID" placeholder= "  아이디를 입력해주세요." size="20" required
@@ -229,11 +229,10 @@
                        oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
                 <!-- 로그인 버튼 -->
                 <p><button id="adminLoginButton" class="ok_button">로그인</button></p>
-                <!-- 회원가입 하러 가기 -->
-                <h3 class="manager_sign_up" href="#" onclick="window.open('Sign_up.html')">관리자 회원가입 →</h3>
             </form>
         </div>
     </div>
 </div>
+
 </body>
 </html>

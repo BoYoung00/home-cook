@@ -106,6 +106,47 @@ public class UserDao {
         return -2; // DB 오류
     }
 
+    // 회원 번호 찾기
+    public int selectUserNum(String id) {
+        String sql = "SELECT userNumber FROM user WHERE userId=?";
+        int userNumber;
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                userNumber = rs.getInt("userNumber");
+                return userNumber;
+            }
+            return -1; // 아이디 없음
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -2; // DB 오류
+    }
+
+    // 회원 이름 찾기
+    public String selectUserName(String id) {
+        String sql = "SELECT userName FROM user WHERE userId=?";
+        String userName;
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                userName = rs.getString("userName");
+                return userName;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public void dbClose() throws SQLException {
         if (conn != null)
             conn.close();
