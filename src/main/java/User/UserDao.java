@@ -70,13 +70,12 @@ public class UserDao {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                int number = rs.getInt(1);
-                String id = rs.getString(2);
-                String password = rs.getString(3);
-                String name = rs.getString(4);
-                String email = rs.getString(5);
+                String id = rs.getString(1);
+                String password = rs.getString(2);
+                String name = rs.getString(3);
+                String email = rs.getString(4);
 
-                UserDto userDto = new UserDto(number, id, password, name, email);
+                UserDto userDto = new UserDto(id, password, name, email);
                 list.add(userDto);
             }
         } catch (Exception e) {

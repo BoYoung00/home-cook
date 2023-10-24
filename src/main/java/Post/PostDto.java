@@ -2,16 +2,16 @@ package Post;
 
 public class PostDto {
     private int postId;
-    private int postUserNumber;
+    private String postUserId;
     private String title;
     private String content;
     private String createdAt;
     private String fileName;
     private String category;
 
-    public PostDto(int postId, int postUserNumber, String title, String content, String createdAt, String fileName, String category) {
+    public PostDto(int postId, String postUserId, String title, String content, String createdAt, String fileName, String category) {
         this.postId = postId;
-        this.postUserNumber = postUserNumber;
+        this.postUserId = postUserId;
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
@@ -27,12 +27,12 @@ public class PostDto {
         this.postId = postId;
     }
 
-    public int getPostUserNumber() {
-        return postUserNumber;
+    public String getPostUserId() {
+        return postUserId;
     }
 
-    public void setPostUserNumber(int postUserNumber) {
-        this.postUserNumber = postUserNumber;
+    public void setPostUserId(String postUserId) {
+        this.postUserId = postUserId;
     }
 
     public String getTitle() {
@@ -79,7 +79,7 @@ public class PostDto {
     public String toString() {
         return "PostDto{" +
                 "postId=" + postId +
-                ", postUserNumber=" + postUserNumber +
+                ", postUserId='" + postUserId + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", createdAt='" + createdAt + '\'' +

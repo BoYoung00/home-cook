@@ -1,8 +1,8 @@
 <%--최초 작성자 : 김보영--%>
 <%--최초 작성일 : 2023.10.22.--%>
-<%--최초 변경일 : 2023.10.22.--%>
+<%--최초 변경일 : 2023.10.24.--%>
 <%--목적 : 게시글 작성--%>
-<%--개정 이력 : 김보영, 2023.10.22.(var. 01)--%>
+<%--개정 이력 : 김보영, 2023.10.24.(var. 01)--%>
 <%--저작권 : 없음--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,16 +15,18 @@
     request.setCharacterEncoding("UTF-8");
     PrintWriter script = response.getWriter();
 
-    // 서버에서 저장할 localhost 뒤에 붙는 위치
-    String path = "/upload/image";
-    String realPath = request.getServletContext().getRealPath(path);
-    System.out.println(realPath);
+//    // 서버에서 저장할 localhost 뒤에 붙는 위치
+//    String path = "/upload/image";
+//    String realPath = request.getServletContext().getRealPath(path);
+//    System.out.println(realPath);
+
+    String myPath = "C:\\Users\\Bo\\Documents\\GitHub\\home-cook\\src\\main\\webapp\\uploadFile";
 
     // 저장 용량 제한
     int size = 10 * 1024 * 1024; //10M
 
     // 실제적 파일 업로드 처리
-    MultipartRequest multi = new MultipartRequest(request, realPath, size, "UTF-8", new DefaultFileRenamePolicy());
+    MultipartRequest multi = new MultipartRequest(request, myPath, size, "UTF-8", new DefaultFileRenamePolicy());
 
     // 파라미터
     String title = (String) multi.getParameter("title");
@@ -45,7 +47,7 @@
     }
 
     PostDao dao = new PostDao();
-    int result = dao.write(userID, title, content, path + fileName, category);
+    int result = dao.write(userID, title, content, fileName, category);
 
     if (result == 1) {
         script.println("<script>");

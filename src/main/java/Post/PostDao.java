@@ -28,15 +28,13 @@ public class PostDao {
     }
 
     // 글쓰기
-    public int write(String userId, String title, String content, String fileName, String category) throws SQLException, ClassNotFoundException {
+    public int write(String userId, String title, String content, String fileName, String category) {
         int count = 0;
-        String sql = "INSERT INTO post (postUserNumber, title, content, fileName, category) VALUES (?, ?, ?, ?, ?)";
-        UserDao userDao = new UserDao();
+        String sql = "INSERT INTO post (postUserId, title, content, fileName, category) VALUES (?, ?, ?, ?, ?)";
 
         try {
-            int userNumber = userDao.selectUserNum(userId);
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, userNumber);
+            pstmt.setString(1, userId);
             pstmt.setString(2, title);
             pstmt.setString(3, content);
             pstmt.setString(4, fileName);
@@ -51,7 +49,7 @@ public class PostDao {
     }
 
     // 모든 글 목록 가져오기
-    public List<PostDto> seleteAll() {
+    public List<PostDto> selectAll() {
         List<PostDto> list = new ArrayList<>();
 
         String sql = "select * from post order by postId desc";
@@ -59,18 +57,18 @@ public class PostDao {
         try {
             pstmt = conn.prepareStatement(sql);
 
-            rs = pstmt.executeQuery(sql);
+            rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                int postID = rs.getInt(1);
-                int postUserNumber = rs.getInt(2);
+                int postId = rs.getInt(1);
+                String postUserId = rs.getString(2);
                 String title = rs.getString(3);
                 String content = rs.getString(4);
                 String createdAt = rs.getString(5);
                 String fileName = rs.getString(6);
                 String category = rs.getString(7);
 
-                PostDto postDto = new PostDto(postID, postUserNumber, title, content, createdAt, fileName, category);
+                PostDto postDto = new PostDto(postId, postUserId, title, content, createdAt, fileName, category);
                 list.add(postDto);
             }
         } catch (Exception e) {
@@ -79,6 +77,34 @@ public class PostDao {
         return list;
     }
 
+    // 해당 게시글 조회
+    public PostDto selectView(int postId) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT p.postID, p.postUserId, p.title, p.content, p.createdAt, p.fileName, p.category"
+                    + " FROM post p, user u WHERE (postId=?) and (p.postUserId = u.userId)";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postId);
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int postID = rs.getInt(1);
+                String postUserId = rs.getString(2);
+                String title = rs.getString(3);
+                String content = rs.getString(4);
+                String createdAt = rs.getString(5);
+                String fileName = rs.getString(6);
+                String category = rs.getString(7);
+
+                PostDto postDto = new PostDto(postID, postUserId, title, content, createdAt, fileName, category);
+
+                return postDto;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
 

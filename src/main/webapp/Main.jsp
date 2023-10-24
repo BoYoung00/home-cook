@@ -83,22 +83,21 @@
 
         /*로그아웃 버튼*/
         #logout {
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Hi Melody', sans-serif;
             font-size: 16px;
             background-color: transparent;
             color: white;
-            padding: 10px 50px;
+            padding-left: 50px;
             border: none;
             cursor: pointer;
         }
 
-            /* 상단 인트로 */
+        /* 상단 인트로 */
         .intro_bg{
             width: 100%;
             height: 718px;
             background-color: lightblue;
             padding-top: 86px;
-
         }
 
         .intro_text{
@@ -111,6 +110,7 @@
             color: #fff;
         }
 
+
         /* 생활비 소개글 */
         .amount{
             position: relative;
@@ -122,12 +122,12 @@
             margin: auto;
         }
 
-        .amount > li{
+        .amount>li{
             flex: 1;
             height: 132px;
         }
 
-        .amount > li > div{
+        .amount> li > div{
             text-align: center;
             margin-top: 37px;
             height: 57px;
@@ -155,13 +155,6 @@
             text-align: center;
         }
 
-        .show_more{
-            width: 100px;
-            height: 30px;
-            float: right;
-        }
-
-
         .Preview{
             white-space: nowrap; /* 요소가 가로로 나란히 정렬되도록 설정 */
             display: flex;
@@ -188,15 +181,27 @@
         .imgHoverEvent .imgBox{
             width: 210px;
             text-align: center;
-            background:url(http://gahyun.wooga.kr/portfolio/triple/resources/img/city00.jpg)
-            no-repeat 50% 50%;
+            /*background:url(http://gahyun.wooga.kr/portfolio/triple/resources/img/city00.jpg);*/
+            /*no-repeat: 50% 50%;*/
             background-size: auto 100%;
             margin: auto;
             letter-spacing: -1px;
             padding-top: 5px;
             color: #fff;
-
         }
+
+        /*미리보기 이미지 크기*/
+        .preview_img {
+            position: absolute;
+            max-width: 300px;
+            height: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
         .imgHoverEvent .hoverBox{
             width: 441px;
             height: 150px;
@@ -204,6 +209,7 @@
             position: relative;
             bottom: -154px;
         }
+
         /* hoverbox 안에 제목과 내용 */
         .hoverBox p.p1{
             text-align:center;
@@ -221,15 +227,21 @@
         /* hover 이벤트 */
         .event1 .hoverBox{
             background: linear-gradient(to bottom, rgba(0,0,0,0) 5%,rgba(255,255,255,1) 90%);
-            transform: translateY(60%);
+            transform: translateY(70%);
             transition: 0.5s;
+            opacity: 0;
         }
+
         .event1:hover .hoverBox{
             transform: translateY(0);
+            opacity: 1;
         }
+
+        .event1:hover { cursor: pointer; }
 
         .dessert{
             height: 601px;
+            width: 100%;
             background: #fff;
         }
 
@@ -250,7 +262,15 @@
             text-align: center;
         }
 
+        /* 더보기 */
+        .show_more{
+            position: relative;
+            top: 10px;
+            left: 1500px;
+        }
+
         /* main_text1 */
+
         .main_text1 > h1{
             padding-top: 50px;
             text-align: center;
@@ -263,7 +283,6 @@
         .service{
             width: 1280px;
             display: flex;
-            justify-content: center;
             margin: 49px auto;
             height: 427px;
             /* background: skyblue; */
@@ -271,7 +290,6 @@
 
         .service > .contents2{
             padding: 20px;
-            margin-left: 50px;
         }
 
         .service > .contents2 >h2{
@@ -312,16 +330,6 @@
             margin: 16px auto;
         }
 
-        /* 더보기 */
-        h1 > a{
-            float: right;
-            font-size: 15px ;
-            margin-right: 120px;
-            margin-top: 30px;
-            position: absolute;
-            right: 0;
-        }
-
         /* footer */
         footer{
             display: flex;
@@ -358,7 +366,7 @@
 
     // 글 목록
     PostDao postDao = new PostDao();
-    List<PostDto> posts = postDao.seleteAll();
+    List<PostDto> posts = postDao.selectAll();
     int displayCount = 3; // 표시할 게시글 개수
 %>
 
@@ -430,77 +438,44 @@
     <h1>식사 레시피</h1>
     <p><a href="" class="show_more">더보기</a></p>
     <ul class="Preview">
-        <li class="imgHoverEvent event1">
-            <div class="contents1_bold">firework</div>
-            <div class="imgBox">
-                메인사진
-            </div>
-            <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
-            </div>
-        </li>
-        <li class="imgHoverEvent event1">
-            <div class="contents1_bold">fire eyes</div>
-            <div class="imgBox">
-                메인사진
-            </div>
-            <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
-            </div>
-        </li>
-        <li class="imgHoverEvent event1">
-            <div class="contents1_bold">drowning</div>
-            <div class="imgBox">
-                메인사진
-            </div>
-            <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
-            </div>
-
-        </li>
+        <% for (int i = 0; i < posts.size() && i < displayCount; i++) {
+            PostDto post = posts.get(i);
+            if (post.getCategory().equals("식사")) { %>
+            <li class="imgHoverEvent event1" onclick="location='Post_view.jsp?no=<%=post.getPostId()%>'">
+                <div class="contents1_bold">firework</div>
+                <div class="imgBox">
+                    <img class="preview_img" src="<%="uploadFile\\" + post.getFileName() %>" alt="이미지">
+                </div>
+                <div class="hoverBox">
+                    <p class="p1"><%= post.getTitle() %></p>
+                    <p class="p2"><%= post.getContent() %></p>
+                </div>
+            </li>
+        <% }
+        } %>
     </ul>
 </div>
 
 <!-- 식사 레시피 미리보기 -->
-
 <div class="dessert" id="link_dessert">
     <h1>디저트 레시피</h1>
     <p><a href="" class="show_more">더보기</a></p>
     <ul class="Preview">
+        <% for (int i = 0; i < posts.size() && i < displayCount; i++) {
+            PostDto post = posts.get(i);
+            if (post.getCategory().equals("디저트")) { %>
         <li class="imgHoverEvent event1">
             <div class="contents1_bold">firework</div>
             <div class="imgBox">
-                메인사진
+                <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
             </div>
             <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
+                <p class="p1"><%= post.getTitle() %></p>
+                <p class="p2"><%= post.getContent() %></p>
             </div>
         </li>
-        <li class="imgHoverEvent event1">
-            <div class="contents1_bold">fire eyes</div>
-            <div class="imgBox">
-                메인사진
-            </div>
-            <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
-            </div>
-        </li>
-        <li class="imgHoverEvent event1">
-            <div class="contents1_bold">drowning</div>
-            <div class="imgBox">
-                메인사진
-            </div>
-            <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
-            </div>
-
-        </li>
+        <% }
+        } %>
     </ul>
 </div>
 
@@ -509,40 +484,33 @@
     <h1>음료 레시피</h1>
     <p><a href="" class="show_more">더보기</a></p>
     <ul class="Preview">
+        <% for (int i = 0; i < posts.size() && i < displayCount; i++) {
+            PostDto post = posts.get(i);
+            if (post.getCategory().equals("음료")) { %>
         <li class="imgHoverEvent event1">
             <div class="contents1_bold">firework</div>
             <div class="imgBox">
-                메인사진
+                <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
             </div>
             <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
+                <p class="p1"><%= post.getTitle() %></p>
+                <p class="p2"><%= post.getContent() %></p>
             </div>
         </li>
-        <li class="imgHoverEvent event1">
-            <div class="contents1_bold">fire eyes</div>
-            <div class="imgBox">
-                메인사진
-            </div>
-            <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
-            </div>
-        </li>
-        <li class="imgHoverEvent event1">
-            <div class="contents1_bold">drowning</div>
-            <div class="imgBox">
-                메인사진
-            </div>
-            <div class="hoverBox">
-                <p class="p1">제목</p>
-                <p class="p2">내용내용내용내용내용내용</p>
-            </div>
-
-        </li>
+        <% }
+        } %>
+<%--        <li class="imgHoverEvent event1">--%>
+<%--            <div class="contents1_bold">drowning</div>--%>
+<%--            <div class="imgBox">--%>
+<%--                메인사진--%>
+<%--            </div>--%>
+<%--            <div class="hoverBox">--%>
+<%--                <p class="p1">제목</p>--%>
+<%--                <p class="p2">내용내용내용내용내용내용</p>--%>
+<%--            </div>--%>
+<%--        </li>--%>
     </ul>
 </div>
-
 
 
 <!-- 사이트 소개 글 -->
