@@ -20,7 +20,7 @@
 //    String realPath = request.getServletContext().getRealPath(path);
 //    System.out.println(realPath);
 
-    String myPath = "C:\\Users\\Bo\\Documents\\GitHub\\home-cook\\src\\main\\webapp\\uploadFile";
+    String myPath = "C:\\intelliJ_save\\home-cook\\src\\main\\webapp\\uploadFile";
 
     // 저장 용량 제한
     int size = 10 * 1024 * 1024; //10M

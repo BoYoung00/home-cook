@@ -467,7 +467,7 @@
         <li class="imgHoverEvent event1">
             <div class="contents1_bold">firework</div>
             <div class="imgBox">
-                <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
+                <img class="preview_img" src="<%="uploadFile\\" + post.getFileName() %>" alt="이미지">
             </div>
             <div class="hoverBox">
                 <p class="p1"><%= post.getTitle() %></p>
@@ -490,7 +490,7 @@
         <li class="imgHoverEvent event1">
             <div class="contents1_bold">firework</div>
             <div class="imgBox">
-                <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
+                <img class="preview_img" src="<%="uploadFile\\" + post.getFileName() %>" alt="이미지">
             </div>
             <div class="hoverBox">
                 <p class="p1"><%= post.getTitle() %></p>
