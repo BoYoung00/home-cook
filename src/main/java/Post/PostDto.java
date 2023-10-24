@@ -6,6 +6,18 @@ public class PostDto {
     private String title;
     private String content;
     private String createdAt;
+    private String fileName;
+    private String category;
+
+    public PostDto(int postId, int postUserNumber, String title, String content, String createdAt, String fileName, String category) {
+        this.postId = postId;
+        this.postUserNumber = postUserNumber;
+        this.title = title;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.fileName = fileName;
+        this.category = category;
+    }
 
     public int getPostId() {
         return postId;
@@ -45,5 +57,34 @@ public class PostDto {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "PostDto{" +
+                "postId=" + postId +
+                ", postUserNumber=" + postUserNumber +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }

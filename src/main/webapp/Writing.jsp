@@ -60,9 +60,14 @@
   }
 %>
 
-<form action="Writing_action.jsp" method="post">
+<form action="Writing_action.jsp" method="post" enctype="multipart/form-data">0
   <h1 style="text-align: center;">글 쓰기</h1>
   <input class="prImageFile" name="imageFile" type="file" id="image" accept="image/*" onchange="setThumbnail(event)" />
+  <select name="category" id="category">
+    <option value="식사" selected>식사</option>
+    <option value="디저트">디저트</option>
+    <option value="음료">음료</option>
+  </select>
   <input type="text" name="title" id="title" placeholder="글 제목" maxlength="50">
   <div id="content_container">
     <div id="image_container">
