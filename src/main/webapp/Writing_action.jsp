@@ -15,22 +15,6 @@
     request.setCharacterEncoding("UTF-8");
     PrintWriter script = response.getWriter();
 
-    String path = "/upload/image";
-    String realPath = request.getServletContext().getRealPath(path);
-    System.out.println(realPath);
-
-    String userID = (String) session.getAttribute("userID");
-
-    if (request.getParameter("title").isEmpty() || request.getParameter("title").isEmpty()) {
-        script.println("<script>");
-        script.println("alert('입력이 안된 사항이 있습니다.')");
-        script.println("history.back()");
-        script.println("</script>");
-        script.close();
-        return;
-    }
-
-
     // 서버에서 저장할 localhost 뒤에 붙는 위치
     String path = "/upload/image";
     String realPath = request.getServletContext().getRealPath(path);
@@ -42,11 +26,26 @@
     // 실제적 파일 업로드 처리
     MultipartRequest multi = new MultipartRequest(request, realPath, size, "UTF-8", new DefaultFileRenamePolicy());
 
-    String title = (String) request.getParameter("title");
-    String content = (String) request.getParameter("content");
+    // 파라미터
+    String title = (String) multi.getParameter("title");
+    String content = (String) multi.getParameter("content");
+    String fileName = (String) multi.getFilesystemName("imageFile");
+    String category = (String) multi.getParameter("category");
+
+    // 로그인 섹션
+    String userID = (String) session.getAttribute("userID");
+
+    if (title.isEmpty() || content.isEmpty()) {
+        script.println("<script>");
+        script.println("alert('입력이 안된 사항이 있습니다.')");
+        script.println("history.back()");
+        script.println("</script>");
+        script.close();
+        return;
+    }
 
     PostDao dao = new PostDao();
-    int result = dao.write(userID, title, content);
+    int result = dao.write(userID, title, content, path + fileName, category);
 
     if (result == 1) {
         script.println("<script>");

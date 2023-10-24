@@ -1,17 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.io.PrintWriter" %>
+<%@ page import="Post.PostDao" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Post.PostDto" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인 홈페이지</title>
-<%--    <link rel="stylesheet" href="main.css">--%>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
     <style>
         *{
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Hi Melody', sans-serif;
             list-style: none;
             text-decoration: none;
             border-collapse: collapse;
@@ -74,11 +77,22 @@
             margin-left:64px ;
         }
 
-        .nav > li >a {
+        .nav > li > a {
             color: #fff;
         }
 
-        /* 상단 인트로 */
+        /*로그아웃 버튼*/
+        #logout {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+            background-color: transparent;
+            color: white;
+            padding: 10px 50px;
+            border: none;
+            cursor: pointer;
+        }
+
+            /* 상단 인트로 */
         .intro_bg{
             width: 100%;
             height: 718px;
@@ -93,12 +107,9 @@
             text-align: center;
         }
 
-
-
         .intro_text > h1 {
             color: #fff;
         }
-
 
         /* 생활비 소개글 */
         .amount{
@@ -111,12 +122,12 @@
             margin: auto;
         }
 
-        .amount>li{
+        .amount > li{
             flex: 1;
             height: 132px;
         }
 
-        .amount> li > div{
+        .amount > li > div{
             text-align: center;
             margin-top: 37px;
             height: 57px;
@@ -130,9 +141,6 @@
         .result{
             font-size: 24PX;
         }
-
-
-
 
         /* food Preview */
 
@@ -220,8 +228,6 @@
             transform: translateY(0);
         }
 
-
-
         .dessert{
             height: 601px;
             background: #fff;
@@ -244,9 +250,7 @@
             text-align: center;
         }
 
-
         /* main_text1 */
-
         .main_text1 > h1{
             padding-top: 50px;
             text-align: center;
@@ -308,6 +312,15 @@
             margin: 16px auto;
         }
 
+        /* 더보기 */
+        h1 > a{
+            float: right;
+            font-size: 15px ;
+            margin-right: 120px;
+            margin-top: 30px;
+            position: absolute;
+            right: 0;
+        }
 
         /* footer */
         footer{
@@ -337,10 +350,16 @@
 <body>
 
 <%
+    // 로그인 섹션
     String userID = null;
     if (session.getAttribute("userID") != null) {
         userID = (String) session.getAttribute("userID");
     }
+
+    // 글 목록
+    PostDao postDao = new PostDao();
+    List<PostDto> posts = postDao.seleteAll();
+    int displayCount = 3; // 표시할 게시글 개수
 %>
 
 <!-- 페이지 상단 부분 -->
@@ -364,7 +383,7 @@
                     %>
                         <li><a href="#">마이페이지</a></li>
                         <form action="Logout_action.jsp" method="post">
-                            <li><a><input type="submit" value="로그아웃"></a></li>
+                            <li><a><input type="submit" id="logout" value="로그아웃"></a></li>
                         </form>
                     <% } %>
                 </ul>
@@ -376,6 +395,7 @@
         </div>
     </div>
 </div>
+
 <!-- 중간 소개글 -->
 <ul class="amount">
     <li>
@@ -411,7 +431,7 @@
     <p><a href="" class="show_more">더보기</a></p>
     <ul class="Preview">
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">firework</div> -->
+            <div class="contents1_bold">firework</div>
             <div class="imgBox">
                 메인사진
             </div>
@@ -421,7 +441,7 @@
             </div>
         </li>
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">fire eyes</div> -->
+            <div class="contents1_bold">fire eyes</div>
             <div class="imgBox">
                 메인사진
             </div>
@@ -431,7 +451,7 @@
             </div>
         </li>
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">drowning</div> -->
+            <div class="contents1_bold">drowning</div>
             <div class="imgBox">
                 메인사진
             </div>
@@ -448,10 +468,10 @@
 
 <div class="dessert" id="link_dessert">
     <h1>디저트 레시피</h1>
-    <!-- <p><a href="" class="show_more">더보기</a></p> -->
+    <p><a href="" class="show_more">더보기</a></p>
     <ul class="Preview">
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">firework</div> -->
+            <div class="contents1_bold">firework</div>
             <div class="imgBox">
                 메인사진
             </div>
@@ -461,7 +481,7 @@
             </div>
         </li>
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">fire eyes</div> -->
+            <div class="contents1_bold">fire eyes</div>
             <div class="imgBox">
                 메인사진
             </div>
@@ -471,7 +491,7 @@
             </div>
         </li>
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">drowning</div> -->
+            <div class="contents1_bold">drowning</div>
             <div class="imgBox">
                 메인사진
             </div>
@@ -487,10 +507,10 @@
 <!-- 식사 레시피 미리보기 -->
 <div class="drink" id="link_drink">
     <h1>음료 레시피</h1>
-    <!-- <p><a href="" class="show_more">더보기</a></p> -->
+    <p><a href="" class="show_more">더보기</a></p>
     <ul class="Preview">
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">firework</div> -->
+            <div class="contents1_bold">firework</div>
             <div class="imgBox">
                 메인사진
             </div>
@@ -500,7 +520,7 @@
             </div>
         </li>
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">fire eyes</div> -->
+            <div class="contents1_bold">fire eyes</div>
             <div class="imgBox">
                 메인사진
             </div>
@@ -510,7 +530,7 @@
             </div>
         </li>
         <li class="imgHoverEvent event1">
-            <!-- <div class="contents1_bold">drowning</div> -->
+            <div class="contents1_bold">drowning</div>
             <div class="imgBox">
                 메인사진
             </div>

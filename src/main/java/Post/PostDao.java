@@ -8,6 +8,7 @@
 package Post;
 
 import User.UserDao;
+import User.UserDto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,9 +28,9 @@ public class PostDao {
     }
 
     // 글쓰기
-    public int write(String userId, String title, String content) throws SQLException, ClassNotFoundException {
+    public int write(String userId, String title, String content, String fileName, String category) throws SQLException, ClassNotFoundException {
         int count = 0;
-        String sql = "INSERT INTO post (postUserNumber, title, content) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO post (postUserNumber, title, content, fileName, category) VALUES (?, ?, ?, ?, ?)";
         UserDao userDao = new UserDao();
 
         try {
@@ -38,6 +39,8 @@ public class PostDao {
             pstmt.setInt(1, userNumber);
             pstmt.setString(2, title);
             pstmt.setString(3, content);
+            pstmt.setString(4, fileName);
+            pstmt.setString(5, category);
 
             count = pstmt.executeUpdate();
         } catch (Exception e) {
@@ -45,6 +48,35 @@ public class PostDao {
         }
 
         return count;
+    }
+
+    // 모든 글 목록 가져오기
+    public List<PostDto> seleteAll() {
+        List<PostDto> list = new ArrayList<>();
+
+        String sql = "select * from post order by postId desc";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+
+            rs = pstmt.executeQuery(sql);
+
+            while (rs.next()) {
+                int postID = rs.getInt(1);
+                int postUserNumber = rs.getInt(2);
+                String title = rs.getString(3);
+                String content = rs.getString(4);
+                String createdAt = rs.getString(5);
+                String fileName = rs.getString(6);
+                String category = rs.getString(7);
+
+                PostDto postDto = new PostDto(postID, postUserNumber, title, content, createdAt, fileName, category);
+                list.add(postDto);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
 }
