@@ -16,17 +16,16 @@
     PrintWriter script = response.getWriter();
 
     // 서버에서 저장할 localhost 뒤에 붙는 위치
-    String path = "/upload";
+    String path = "uploadFile/";
     String realPath = request.getServletContext().getRealPath(path);
-    System.out.println(realPath);
 
-//    String myPath = "C:\\Users\\Bo\\Documents\\GitHub\\home-cook\\src\\main\\webapp\\uploadFile";
+    String myPath = "C:\\Users\\Bo\\Documents\\GitHub\\home-cook\\src\\main\\webapp\\uploadFile";
 
     // 저장 용량 제한
     int size = 10 * 1024 * 1024; //10M
 
     // 실제적 파일 업로드 처리
-    MultipartRequest multi = new MultipartRequest(request, realPath, size, "utf-8", new DefaultFileRenamePolicy());
+    MultipartRequest multi = new MultipartRequest(request, realPath, size, "UTF-8", new DefaultFileRenamePolicy());
 
     // 파라미터
     String title = (String) multi.getParameter("title");
@@ -47,12 +46,12 @@
     }
 
     PostDao dao = new PostDao();
-    int result = dao.write(userID, title, content, fileName, category);
+    int result = dao.write("user1", title, content, path + fileName, category);
 
     if (result == 1) {
         script.println("<script>");
         script.println("alert('글 작성이 완료되었습니다.')");
-        script.println("location.href='Main.jsp'");
+        script.println("location.href='Post_list.jsp?category=" + category + "'");
         script.println("</script>");
         script.close();
     } else {

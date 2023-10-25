@@ -1,4 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!-- 최초 작성자 : 김예지 -->
+<!-- 최초 작성일 : 2023.10.10. -->
+<!-- 최초 변경일 : 2023.10.12. -->
+<!-- 목적 : 로그인 -->
+<!-- 개정 이력 : 김예지, 2023.10.12.(var. 01) -->
+<!-- 저작권 : 없음 -->
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,13 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
-<%--    <link rel="stylesheet" href="login.css">--%>
-    <!-- 최초 작성자 : 김예지 -->
-    <!-- 최초 작성일 : 2023.10.10. -->
-    <!-- 최초 변경일 : 2023.10.12. -->
-    <!-- 목적 : 로그인 -->
-    <!-- 개정 이력 : 김예지, 2023.10.12.(var. 01) -->
-    <!-- 저작권 : 없음 -->
+    <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
 
     <style>
         /* 페이지 전체 css , 폰트 설정 */

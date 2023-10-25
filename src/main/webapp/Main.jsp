@@ -3,6 +3,7 @@
 <%@ page import="Post.PostDao" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Post.PostDto" %>
+<%@ page import="Post.CategoryEnum" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+    <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
+
     <style>
         *{
             font-family: 'Hi Melody', sans-serif;
@@ -48,7 +51,7 @@
         .LOGO{
             width: 200px;
             height: 90px;
-
+            cursor: pointer;
         }
 
         .header_bg{
@@ -296,14 +299,6 @@
             margin-bottom: 27px;
         }
 
-        /* main_text2 */
-
-        /*.main_text2{*/
-        /*    width: 100%;*/
-        /*    height: 418px;*/
-        /*    background-image: url("image/마스크\ 그룹\ 1.png");*/
-        /*}*/
-
         .main_text2 > ul {
             display: flex;
             padding-top: 138px;
@@ -318,7 +313,6 @@
         .main_text2 > ul > li > div > h1{
             color: #fff;
         }
-
 
         .more2 {
             width: 220px;
@@ -368,6 +362,11 @@
     PostDao postDao = new PostDao();
     List<PostDto> posts = postDao.selectAll();
     int displayCount = 3; // 표시할 게시글 개수
+
+    // 해당 카테고리 게시물들 가져오기
+    List<PostDto> foodPostList = postDao.selectCategory("food");
+    List<PostDto> dessertPostList = postDao.selectCategory("dessert");
+    List<PostDto> drinkPostList = postDao.selectCategory("drink");
 %>
 
 <!-- 페이지 상단 부분 -->
@@ -375,7 +374,7 @@
     <div class="intro_bg">
         <div class="header_bg">
             <div class="header" id="link_header">
-                <p><img src="img/logo.png" class="LOGO"></p>
+                <p><img src="img/logo.png" class="LOGO" onclick="location='Main.jsp'"></p>
                 <!-- 상단 탭 바 -->
                 <ul class="nav">
                     <li><a href="#">홈</a></li>
@@ -436,79 +435,69 @@
 
 <div class="food" id="link_food">
     <h1>식사 레시피</h1>
-    <p><a href="" class="show_more">더보기</a></p>
+    <%--    식사 목록 더보기--%>
+    <p><a href="Post_list.jsp?category=food" class="show_more">더보기</a></p>
     <ul class="Preview">
-        <% for (int i = 0; i < posts.size() && i < displayCount; i++) {
-            PostDto post = posts.get(i);
-            if (post.getCategory().equals("식사")) { %>
+        <% for (int i = 0; i < foodPostList.size() && i < displayCount; i++) {
+            PostDto post = foodPostList.get(i);
+        %>
             <li class="imgHoverEvent event1" onclick="location='Post_view.jsp?no=<%=post.getPostId()%>'">
                 <div class="contents1_bold">firework</div>
                 <div class="imgBox">
-                    <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
+                    <img class="preview_img" src="<%=post.getFileName() %>" alt="<%= post.getTitle() %>">
                 </div>
                 <div class="hoverBox">
                     <p class="p1"><%= post.getTitle() %></p>
                     <p class="p2"><%= post.getContent() %></p>
                 </div>
             </li>
-        <% }
-        } %>
+        <% } %>
     </ul>
 </div>
 
-<!-- 식사 레시피 미리보기 -->
+<!-- 디저트 레시피 미리보기 -->
 <div class="dessert" id="link_dessert">
     <h1>디저트 레시피</h1>
-    <p><a href="" class="show_more">더보기</a></p>
+    <%--    디저트 목록 더보기--%>
+    <p><a href="Post_list.jsp?category=dessert" class="show_more">더보기</a></p>
     <ul class="Preview">
-        <% for (int i = 0; i < posts.size() && i < displayCount; i++) {
-            PostDto post = posts.get(i);
-            if (post.getCategory().equals("디저트")) { %>
+        <% for (int i = 0; i < dessertPostList.size() && i < displayCount; i++) {
+            PostDto post = dessertPostList.get(i);
+        %>
         <li class="imgHoverEvent event1" onclick="location='Post_view.jsp?no=<%=post.getPostId()%>'">
             <div class="contents1_bold">firework</div>
             <div class="imgBox">
-                <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
+                <img class="preview_img" src="<%=post.getFileName() %>" alt="<%= post.getTitle() %>">
             </div>
             <div class="hoverBox">
                 <p class="p1"><%= post.getTitle() %></p>
                 <p class="p2"><%= post.getContent() %></p>
             </div>
         </li>
-        <% }
-        } %>
+        <% } %>
     </ul>
 </div>
 
-<!-- 식사 레시피 미리보기 -->
+<!-- 음료 레시피 미리보기 -->
 <div class="drink" id="link_drink">
     <h1>음료 레시피</h1>
-    <p><a href="" class="show_more">더보기</a></p>
+    <%--    음료 목록 더보기--%>
+    <p><a href="Post_list.jsp?category=drink" class="show_more">더보기</a></p>
     <ul class="Preview">
-        <% for (int i = 0; i < posts.size() && i < displayCount; i++) {
-            PostDto post = posts.get(i);
-            if (post.getCategory().equals("음료")) { %>
-        <li class="imgHoverEvent event1"  onclick="location='Post_view.jsp?no=<%=post.getPostId()%>'">
+        <% for (int i = 0; i < drinkPostList.size() && i < displayCount; i++) {
+            PostDto post = drinkPostList.get(i);
+        %>
+        <li class="imgHoverEvent event1" onclick="location='Post_view.jsp?no=<%=post.getPostId()%>'">
             <div class="contents1_bold">firework</div>
             <div class="imgBox">
-                <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
+                <img class="preview_img" src="<%=post.getFileName() %>" alt="<%= post.getTitle() %>">
             </div>
             <div class="hoverBox">
                 <p class="p1"><%= post.getTitle() %></p>
                 <p class="p2"><%= post.getContent() %></p>
             </div>
         </li>
-        <% }
-        } %>
-<%--        <li class="imgHoverEvent event1">--%>
-<%--            <div class="contents1_bold">drowning</div>--%>
-<%--            <div class="imgBox">--%>
-<%--                메인사진--%>
-<%--            </div>--%>
-<%--            <div class="hoverBox">--%>
-<%--                <p class="p1">제목</p>--%>
-<%--                <p class="p2">내용내용내용내용내용내용</p>--%>
-<%--            </div>--%>
-<%--        </li>--%>
+        <% } %>
     </ul>
 </div>
 
