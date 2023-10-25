@@ -444,7 +444,7 @@
             <li class="imgHoverEvent event1" onclick="location='Post_view.jsp?no=<%=post.getPostId()%>'">
                 <div class="contents1_bold">firework</div>
                 <div class="imgBox">
-                    <img class="preview_img" src="<%="uploadFile\\" + post.getFileName() %>" alt="이미지">
+                    <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
                 </div>
                 <div class="hoverBox">
                     <p class="p1"><%= post.getTitle() %></p>
@@ -464,10 +464,10 @@
         <% for (int i = 0; i < posts.size() && i < displayCount; i++) {
             PostDto post = posts.get(i);
             if (post.getCategory().equals("디저트")) { %>
-        <li class="imgHoverEvent event1">
+        <li class="imgHoverEvent event1" onclick="location='Post_view.jsp?no=<%=post.getPostId()%>'">
             <div class="contents1_bold">firework</div>
             <div class="imgBox">
-                <img class="preview_img" src="<%="uploadFile\\" + post.getFileName() %>" alt="이미지">
+                <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
             </div>
             <div class="hoverBox">
                 <p class="p1"><%= post.getTitle() %></p>
@@ -487,10 +487,10 @@
         <% for (int i = 0; i < posts.size() && i < displayCount; i++) {
             PostDto post = posts.get(i);
             if (post.getCategory().equals("음료")) { %>
-        <li class="imgHoverEvent event1">
+        <li class="imgHoverEvent event1"  onclick="location='Post_view.jsp?no=<%=post.getPostId()%>'">
             <div class="contents1_bold">firework</div>
             <div class="imgBox">
-                <img class="preview_img" src="<%="uploadFile\\" + post.getFileName() %>" alt="이미지">
+                <img class="preview_img" src="<%="uploadFile/" + post.getFileName() %>" alt="이미지">
             </div>
             <div class="hoverBox">
                 <p class="p1"><%= post.getTitle() %></p>

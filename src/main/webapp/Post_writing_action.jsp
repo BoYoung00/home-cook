@@ -15,18 +15,18 @@
     request.setCharacterEncoding("UTF-8");
     PrintWriter script = response.getWriter();
 
-//    // 서버에서 저장할 localhost 뒤에 붙는 위치
-//    String path = "/upload/image";
-//    String realPath = request.getServletContext().getRealPath(path);
-//    System.out.println(realPath);
+    // 서버에서 저장할 localhost 뒤에 붙는 위치
+    String path = "/upload";
+    String realPath = request.getServletContext().getRealPath(path);
+    System.out.println(realPath);
 
-    String myPath = "C:\\intelliJ_save\\home-cook\\src\\main\\webapp\\uploadFile";
+//    String myPath = "C:\\Users\\Bo\\Documents\\GitHub\\home-cook\\src\\main\\webapp\\uploadFile";
 
     // 저장 용량 제한
     int size = 10 * 1024 * 1024; //10M
 
     // 실제적 파일 업로드 처리
-    MultipartRequest multi = new MultipartRequest(request, myPath, size, "UTF-8", new DefaultFileRenamePolicy());
+    MultipartRequest multi = new MultipartRequest(request, realPath, size, "utf-8", new DefaultFileRenamePolicy());
 
     // 파라미터
     String title = (String) multi.getParameter("title");
