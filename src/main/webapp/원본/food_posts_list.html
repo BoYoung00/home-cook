@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
-    <title>요리 게시물 목록</title>
+    <title>식사 게시물 목록</title>
 </head>
 <body>
     <!-- 헤더 -->
@@ -28,12 +28,111 @@
 
     <!-- 페이지 상단부  -->
     <div class="title">
-        <h1>요리 레시피 목록</h1>
-        <p><button class="write_btn">글 작성하기</button></p>
+        <h1>식사 레시피 목록</h1>
+        <!-- <p><button class="write_btn">글 작성하기</button></p> -->
+        <p><input type="submit" value="글 작성하기" id= "myButton" class="ok_button"></p>
     </div>
-    <hr>
+
+    <!-- 내용 -->
+    <div class="first">
+        <div class="post-list">
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="first">
+        <div class="post-list">
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="first">
+        <div class="post-list">
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+            <div class="post">
+                <img class="thumbnail" src="" alt="게시물 1">
+                <h2 class="post-title">게시물 제목 1</h2>
+                <p class="post-description">게시물 1의 설명입니다.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const button = document.getElementById('myButton');
+
+        button.addEventListener('mousedown', function() {
+            button.classList.add('clicked');
+        });
+
+        button.addEventListener('mouseup', function() {
+            button.classList.remove('clicked');
+        });
+
+        button.addEventListener('mouseout', function() {
+            button.classList.remove('clicked');
+        });
+    </script>
+
+
+
 
     <!-- footer -->
+    <br>
+    <br>
+    <br>
     <footer>
         <div>
             <img src="로고누끼.png" class="footer_logo">

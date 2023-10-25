@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포스팅 페이지</title>
+    <link rel="stylesheet" href="posting_page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <div class="header_bg">
+        <div class="header" id="link_header">
+            <p><img src="로고누끼.png" class="LOGO"></p>
+        </div>
+    </div>
+    <!-- 포스팅 영역 -->
+    <div class="posting_area">
+        <form action="Writing_action.jsp" method="post">
+            <h1 style="text-align: center;">글 쓰기</h1>
+            <select name="category" id="category">
+                <option value="1">식사</option>
+                <option value="2">디저트</option>
+                <option value="3">음료</option>
+            </select>
+            <input type="text" name="title" id="title" placeholder="글 제목" maxlength="50">
+            <br>
+            <br>
+            <input class="prImageFile" name="imageFile" type="file" id="image" accept="image/*" onchange="setThumbnail(event)" />
+            <br>
+            <br>
+            <div id="content_container">
+              <div id="image_container">
+                <img id="thumbnail" src="" alt="Image">
+              </div>
+              <textarea type="text" name="content" id="content" placeholder=" 작성해주세요."></textarea>
+            </div>
+            <br>
+            <br>
+            <p><input type="submit" value="글쓰기" id= "myButton" class="ok_button"></p>
+            <br>
+            <br>
+          </form>    
+    </div>
+
+
+    <script>
+        const button = document.getElementById('myButton');
+
+        button.addEventListener('mousedown', function() {
+            button.classList.add('clicked');
+        });
+
+        button.addEventListener('mouseup', function() {
+            button.classList.remove('clicked');
+        });
+
+        button.addEventListener('mouseout', function() {
+            button.classList.remove('clicked');
+        });
+    </script>
+
+    
+</body>
+</html>
