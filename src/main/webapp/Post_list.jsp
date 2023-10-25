@@ -249,7 +249,11 @@
             <div class="post" onclick="location='Post_view.jsp?no=<%= post.getPostId() %>'"> <!-- 해당 게시글 조회 -->
                 <img class="thumbnail" src="<%= post.getFileName() %>" alt="<%= post.getTitle() %>"> <!-- 이미지 -->
                 <h2 class="post-title"><%= post.getTitle() %></h2> <!-- 제목 -->
-                <p class="post-description"><%= post.getContent() %></p> <!-- 내용 -->
+                <%
+                    // 내용 자르기
+                    String content = post.getContent().length() > 15 ? post.getContent().substring(0, 15) + "..." : post.getContent();
+                %>
+                <p class="post-description"><%= content %></p> <!-- 내용 -->
             </div>
         <% } %>
     </div>

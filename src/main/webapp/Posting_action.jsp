@@ -18,12 +18,14 @@
     // 서버에서 저장할 localhost 뒤에 붙는 위치
     String path = "uploadFile/";
     String realPath = request.getServletContext().getRealPath(path);
+    System.out.printf(realPath);
 
-    String myPath = "C:\\Users\\Bo\\Documents\\GitHub\\home-cook\\src\\main\\webapp\\uploadFile";
+    String myPath = "C:\\intelliJ_save\\home-cook\\src\\main\\webapp\\uploadFile";
 
     // 저장 용량 제한
     int size = 10 * 1024 * 1024; //10M
 
+    DefaultFileRenamePolicy d;
     // 실제적 파일 업로드 처리
     MultipartRequest multi = new MultipartRequest(request, realPath, size, "UTF-8", new DefaultFileRenamePolicy());
 

@@ -269,7 +269,7 @@
         .show_more{
             position: relative;
             top: 10px;
-            left: 1500px;
+            left: 1300px;
         }
 
         /* main_text1 */
@@ -448,7 +448,11 @@
                 </div>
                 <div class="hoverBox">
                     <p class="p1"><%= post.getTitle() %></p>
-                    <p class="p2"><%= post.getContent() %></p>
+                    <%
+                        // 내용 자르기
+                        String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "..." : post.getContent();
+                    %>
+                    <p class="p2"><%= content %></p>
                 </div>
             </li>
         <% } %>
@@ -471,7 +475,11 @@
             </div>
             <div class="hoverBox">
                 <p class="p1"><%= post.getTitle() %></p>
-                <p class="p2"><%= post.getContent() %></p>
+                <%
+                    // 내용 자르기
+                    String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "..." : post.getContent();
+                %>
+                <p class="p2"><%= content %></p>
             </div>
         </li>
         <% } %>
@@ -494,7 +502,11 @@
             </div>
             <div class="hoverBox">
                 <p class="p1"><%= post.getTitle() %></p>
-                <p class="p2"><%= post.getContent() %></p>
+                <%
+                    // 내용 자르기
+                    String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "..." : post.getContent();
+                %>
+                <p class="p2"><%= content %></p>
             </div>
         </li>
         <% } %>
