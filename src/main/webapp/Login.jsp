@@ -203,7 +203,7 @@
         <div class="panel on">
             <!-- 사용자 로그인 페이지 -->
             <form class="user" action="Login_user_action.jsp" method="post">
-                <img src="img/logo.png" alt="로고" class="logo">
+                <img src="Default/img/logo.png" alt="로고" class="logo">
                 <p class="login_text">사용자 로그인</p>
                 <!-- 텍스트 박스 -->
                 <input type="id" class="login_textbox" name="userId" placeholder= "  아이디를 입력해주세요." size="20" required
@@ -220,7 +220,7 @@
         <div class="panel">
             <!-- 관리자 로그인 페이지 -->
             <form class="manager" action="Manager_login_action.jsp" method="post">
-                <img src="img/logo.png" alt="로고" class="logo">
+                <img src="Default/img/logo.png" alt="로고" class="logo">
                 <p class="login_text">관리자 로그인</p>
                 <!-- 텍스트 박스 -->
                 <input type="id" class="login_textbox" name="managerID" placeholder= "  아이디를 입력해주세요." size="20" required

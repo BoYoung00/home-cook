@@ -3,7 +3,6 @@
 <%@ page import="User.UserDao" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Post.CategoryEnum" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -212,7 +211,7 @@
 <!-- 헤더 -->
 <div class="header_bg">
     <div class="header" id="link_header">
-        <p><img src="img/logo.png" class="LOGO" onclick="location='Main.jsp'"></p>
+        <p><img src="Default/img/logo.png" class="LOGO" onclick="location='Main.jsp'"></p>
         <!-- 상단 탭 바 -->
         <ul class="nav">
             <li><a href="Main.jsp">홈</a></li>
@@ -248,10 +247,14 @@
         <% for(PostDto post : posts) { %>
             <div class="post" onclick="location='Post_view.jsp?no=<%= post.getPostId() %>'"> <!-- 해당 게시글 조회 -->
                 <img class="thumbnail" src="<%= post.getFileName() %>" alt="<%= post.getTitle() %>"> <!-- 이미지 -->
-                <h2 class="post-title"><%= post.getTitle() %></h2> <!-- 제목 -->
+                <%
+                    // 제목 자르기
+                    String title = post.getTitle().length() > 10 ? post.getTitle().substring(0, 10) + "⋯" : post.getTitle();
+                %>
+                <h2 class="post-title"><%= title %></h2> <!-- 제목 -->
                 <%
                     // 내용 자르기
-                    String content = post.getContent().length() > 15 ? post.getContent().substring(0, 15) + "..." : post.getContent();
+                    String content = post.getContent().length() > 15 ? post.getContent().substring(0, 15) + "⋯" : post.getContent();
                 %>
                 <p class="post-description"><%= content %></p> <!-- 내용 -->
             </div>
@@ -280,7 +283,7 @@
 <br>
 <footer>
     <div>
-        <img src="img/logo.png" class="footer_logo">
+        <img src="Default/img/logo.png" class="footer_logo">
     </div>
     <div>
         CEO. 집밥의 민족 <br>

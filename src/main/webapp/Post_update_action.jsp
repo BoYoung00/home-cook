@@ -1,18 +1,20 @@
 <%--최초 작성자 : 김보영--%>
-<%--최초 작성일 : 2023.10.22.--%>
-<%--최초 변경일 : 2023.10.24.--%>
-<%--목적 : 게시글 작성--%>
-<%--개정 이력 : 김보영, 2023.10.24.(var. 01)--%>
+<%--최초 작성일 : 2023.11.06.--%>
+<%--최초 변경일 : 2023.11.06.--%>
+<%--목적 : 게시글 수정--%>
+<%--개정 이력 : 김보영, 2023.11.06.(var. 01)--%>
 <%--저작권 : 없음--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="Post.PostDao" %>
+<%@ page import="java.util.List" %>
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@ page import="Post.PostDao" %>
 
 <%
     request.setCharacterEncoding("UTF-8");
+
     PrintWriter script = response.getWriter();
 
     // 서버에서 저장할 localhost 뒤에 붙는 위치
@@ -26,10 +28,13 @@
     MultipartRequest multi = new MultipartRequest(request, realPath, size, "UTF-8", new DefaultFileRenamePolicy());
 
     // 파라미터
+    int postId = Integer.parseInt(multi.getParameter("postId"));
     String title = (String) multi.getParameter("title");
     String content = (String) multi.getParameter("content");
-    String fileName = (String) multi.getFilesystemName("imageFile");
+    String fileName = (String) multi.getParameter("fileName");
     String category = (String) multi.getParameter("category");
+
+//    String realFileName = (String) multi.getFilesystemName("fileBtn");
 
     // 로그인 섹션
     String userID = (String) session.getAttribute("userID");
@@ -44,20 +49,19 @@
     }
 
     PostDao dao = new PostDao();
-    int result = dao.write(userID, title, content, path + fileName, category);
+    int updateResult = dao.postUpdate(postId, title, content, fileName, category);
 
-    if (result == 1) {
+    if (updateResult == 1) {
         script.println("<script>");
-        script.println("alert('글 작성이 완료되었습니다.')");
+        script.println("alert('글 수정이 완료되었습니다.')");
         script.println("location.href='Post_list.jsp?category=" + category + "'");
         script.println("</script>");
         script.close();
     } else {
         script.println("<script>");
-        script.println("alert('글 작성이 실패하셨습니다. 다시 시도해주세요.')");
+        script.println("alert('글 수정에 실패하셨습니다. 다시 시도해주세요.')");
         script.println("history.back()");
         script.println("</script>");
         script.close();
     }
-
 %>

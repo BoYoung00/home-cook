@@ -9,7 +9,7 @@
 
     // JDBC
     PostDao postDao = new PostDao();
-    PostDto post = postDao.selectView(postId);
+    PostDto post = postDao.selectView(postId); // 조회
 
     // 작성자 이름 찾기
     UserDao userDao = new UserDao();
@@ -30,6 +30,10 @@
     <h3><%= post.getTitle() %></h3>
     <p>작성자 : <span><%= userName %></span> |
         <span> 작성날짜 : <%= post.getCreatedAt() %></span>
+    </p>
+    <p>
+        <a href="Post_update.jsp?postId=<%=postId%>">수정</a>
+        <a href="Post_delete_action.jsp?postId=<%=postId%>">삭제</a>
     </p>
     <hr>
     <img src="<%= post.getFileName() %>" alt="<%= post.getTitle() %>">

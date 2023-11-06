@@ -134,6 +134,42 @@ public class PostDao {
         }
         return null;
     }
+
+    // 게시글 삭제
+    public int postDelete(int postId) {
+        String sql = "delete from post where postId=?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postId);
+
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
+
+    // 게시글 수정
+    public int postUpdate(int postId, String title, String content, String fileName, String category) {
+        int count = 0;
+        String sql = "UPDATE post SET title=?, content=?, fileName=?, category=? WHERE postId=?;";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, title);
+            pstmt.setString(2, content);
+            pstmt.setString(3, fileName);
+            pstmt.setString(4, category);
+            pstmt.setInt(5, postId);
+
+            count = pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 }
 
 

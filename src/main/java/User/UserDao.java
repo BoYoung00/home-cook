@@ -43,12 +43,12 @@ public class UserDao {
         return count;
     }
 
-    public int delete(int number) {
-        String sql = "delete from user where userNumber=?";
+    public int delete(String userId) {
+        String sql = "delete from user where userId=?";
 
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, number);
+            pstmt.setString(1, userId);
 
             return pstmt.executeUpdate();
         } catch (Exception e) {

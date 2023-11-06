@@ -10,12 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/10/26 중간평가 마무리">
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Post_delete_action.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Post_update.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Post_update_action.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/원본/Test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Post/CategoryEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Post/PostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Post/PostDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Post/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/User/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Posting_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Posting_action.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Posting_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Posting_page.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,8 +69,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/intelliJ_save/Lecture_JSP&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -64,6 +89,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\intelliJ_save\home-cook\src\main\webapp\WEB-INF" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\intelliJ_save\home-cook\src\main\webapp" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.65" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -77,6 +105,8 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="1daac543-c9ae-4f29-acdd-9b970f2a5bb8" />
+        <option name="HTTP_PORT" value="8088" />
+        <option name="JNDI_PORT" value="1090" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -169,6 +199,8 @@
       <workItem from="1698377677100" duration="932000" />
       <workItem from="1698973951990" duration="15000" />
       <workItem from="1698980290007" duration="468000" />
+      <workItem from="1699247586100" duration="14016000" />
+      <workItem from="1699275515926" duration="6211000" />
     </task>
     <task id="LOCAL-00001" summary="23/10/26 중간평가 마무리">
       <created>1698251725508</created>

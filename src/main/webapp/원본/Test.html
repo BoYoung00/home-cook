@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 파일 선택 버튼 -->
+<input type="button" value="파일 선택" id="fileSelectButton">
+
+<!-- 숨겨진 파일 업로드 필드 -->
+<input class="prImageFile" name="imageFile" type="file" id="image" style="display: none;" accept="image/*" onchange="setThumbnail(event)" />
+
+
+<input type="hidden" id="hid">
+<script>
+    // 파일 선택 버튼을 클릭할 때 파일 업로드 필드를 클릭하도록 설정
+    document.getElementById('fileSelectButton').addEventListener('click', function () {
+        document.getElementById('image').click();
+    });
+
+    document.getElementById('hid').value = "Hi";
+    alert(document.getElementById('hid'));
+</script>
+</body>
+</html>

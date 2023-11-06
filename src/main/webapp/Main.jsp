@@ -3,7 +3,6 @@
 <%@ page import="Post.PostDao" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Post.PostDto" %>
-<%@ page import="Post.CategoryEnum" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -374,7 +373,7 @@
     <div class="intro_bg">
         <div class="header_bg">
             <div class="header" id="link_header">
-                <p><img src="img/logo.png" class="LOGO" onclick="location='Main.jsp'"></p>
+                <p><img src="Default/img/logo.png" class="LOGO" onclick="location='Main.jsp'"></p>
                 <!-- 상단 탭 바 -->
                 <ul class="nav">
                     <li><a href="#">홈</a></li>
@@ -447,10 +446,14 @@
                     <img class="preview_img" src="<%=post.getFileName() %>" alt="<%= post.getTitle() %>">
                 </div>
                 <div class="hoverBox">
-                    <p class="p1"><%= post.getTitle() %></p>
+                    <%
+                        // 제목 자르기
+                        String title = post.getTitle().length() > 10 ? post.getTitle().substring(0, 10) + "⋯" : post.getTitle();
+                    %>
+                    <p class="p1"><%= title %></p>
                     <%
                         // 내용 자르기
-                        String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "..." : post.getContent();
+                        String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "⋯" : post.getContent();
                     %>
                     <p class="p2"><%= content %></p>
                 </div>
@@ -474,10 +477,14 @@
                 <img class="preview_img" src="<%=post.getFileName() %>" alt="<%= post.getTitle() %>">
             </div>
             <div class="hoverBox">
-                <p class="p1"><%= post.getTitle() %></p>
+                <%
+                    // 제목 자르기
+                    String title = post.getTitle().length() > 10 ? post.getTitle().substring(0, 10) + "⋯" : post.getTitle();
+                %>
+                <p class="p1"><%= title %></p>
                 <%
                     // 내용 자르기
-                    String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "..." : post.getContent();
+                    String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "⋯" : post.getContent();
                 %>
                 <p class="p2"><%= content %></p>
             </div>
@@ -501,10 +508,14 @@
                 <img class="preview_img" src="<%=post.getFileName() %>" alt="<%= post.getTitle() %>">
             </div>
             <div class="hoverBox">
-                <p class="p1"><%= post.getTitle() %></p>
+                <%
+                    // 제목 자르기
+                    String title = post.getTitle().length() > 10 ? post.getTitle().substring(0, 10) + "⋯" : post.getTitle();
+                %>
+                <p class="p1"><%= title %></p>
                 <%
                     // 내용 자르기
-                    String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "..." : post.getContent();
+                    String content = post.getContent().length() > 20 ? post.getContent().substring(0, 20) + "⋯" : post.getContent();
                 %>
                 <p class="p2"><%= content %></p>
             </div>
@@ -518,7 +529,7 @@
 <div class="main_text1" id="link_main_text1">
     <div class="service">
         <div class="fooh_photo">
-            <img src="img/main1.jpg" alt="" width="400" height="400">
+            <img src="Default/img/logo.png" alt="" width="400" height="400">
         </div>
         <div class="contents2">
             <h2>집밥의 민족 소개글</h2>
