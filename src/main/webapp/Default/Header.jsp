@@ -106,15 +106,16 @@
     }
 %>
 
+<!-- 헤더 -->
 <div class="header_bg">
     <div class="header" id="link_header">
-        <p><img src="img/logo.png" class="LOGO"></p>
+        <p><img src="Default/img/logo.png" class="LOGO" onclick="location='Main.jsp'"></p>
         <!-- 상단 탭 바 -->
         <ul class="nav">
-            <li><a href="#">홈</a></li>
-            <li><a href="#link_food">식사</a></li>
-            <li><a href="#link_dessert">디저트</a></li>
-            <li><a href="#link_drink">음료</a></li>
+            <li><a href="Main.jsp">홈</a></li>
+            <li><a href="Post_list.jsp?category=food">식사</a></li>
+            <li><a href="Post_list.jsp?category=dessert">디저트</a></li>
+            <li><a href="Post_list.jsp?category=drink">음료</a></li>
             <%
                 if (userID == null) {
             %>

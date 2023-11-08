@@ -148,10 +148,6 @@
     PostDao postDao = new PostDao();
     PostDto post = postDao.selectView(postId); // 게시글 값들 가져오기
 
-    // 작성자 이름 찾기
-    UserDao userDao = new UserDao();
-    String userName = userDao.selectUserName(post.getPostUserId());
-
     // 로그인이 안되어 있을 시
     if (userID == null ) {
         script.println("<script>");
@@ -189,7 +185,9 @@
         <input type="text" name="title" id="title" placeholder="글 제목" maxlength="50" value="<%=post.getTitle()%>">
         <br><br>
         <!--실제로 파일이름 값을 넘겨주는 태그 -->
-        <input type="hidden" name="fileName" id="imageFile" value="aa">
+        <input type="hidden" name="fileName" id="imageFile" value="">
+        <input type="hidden" name="oldFileName" value="<%=post.getFileName()%>">
+
         <!-- 파일 선택 버튼 -->
         <input type="button" value="파일 선택" id="fileSelectButton">
         <!-- 숨겨진 파일 업로드 필드 -->
@@ -215,11 +213,9 @@
     button.addEventListener('mousedown', function() {
         button.classList.add('clicked');
     });
-
     button.addEventListener('mouseup', function() {
         button.classList.remove('clicked');
     });
-
     button.addEventListener('mouseout', function() {
         button.classList.remove('clicked');
     });

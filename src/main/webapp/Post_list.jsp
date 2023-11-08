@@ -208,36 +208,11 @@
     List<PostDto> posts = postDao.selectCategory(inputCategory);
 %>
 
-<!-- 헤더 -->
-<div class="header_bg">
-    <div class="header" id="link_header">
-        <p><img src="Default/img/logo.png" class="LOGO" onclick="location='Main.jsp'"></p>
-        <!-- 상단 탭 바 -->
-        <ul class="nav">
-            <li><a href="Main.jsp">홈</a></li>
-            <li><a href="Post_list.jsp?category=food">식사</a></li>
-            <li><a href="Post_list.jsp?category=dessert">디저트</a></li>
-            <li><a href="Post_list.jsp?category=drink">음료</a></li>
-            <%
-                if (userID == null) {
-            %>
-            <li><a href="Login.jsp">로그인</a></li>
-            <%
-            } else {
-            %>
-            <li><a href="#">마이페이지</a></li>
-            <form action="Logout_action.jsp" method="post">
-                <li><a><input type="submit" id="logout" value="로그아웃"></a></li>
-            </form>
-            <% } %>
-        </ul>
-    </div>
-</div>
+<jsp:include page="Default/Header.jsp"></jsp:include>
 
 <!-- 페이지 상단부  -->
 <div class="title">
     <h1>식사 레시피 목록</h1>
-    <%--<p><button class="write_btn" onclick="location='Posting_page.jsp'">글 작성하기</button></p>--%>
     <p><input type="button" value="글 작성하기" id= "myButton" class="ok_button" onclick="location='Posting_page.jsp?category=<%=inputCategory%>'"></p>
 </div>
 
@@ -262,6 +237,9 @@
     </div>
 </div>
 
+<!-- footer -->
+<br><br><br>
+<jsp:include page="Default/Footer.jsp"></jsp:include>
 
 <script>
     const button = document.getElementById('myButton');
@@ -276,21 +254,5 @@
         button.classList.remove('clicked');
     });
 </script>
-
-<!-- footer -->
-<br>
-<br>
-<br>
-<footer>
-    <div>
-        <img src="Default/img/logo.png" class="footer_logo">
-    </div>
-    <div>
-        CEO. 집밥의 민족 <br>
-        Addr. 부천대학교 컴퓨터 소프트웨어과.<br>
-        Tel. 010-XXXX-XXXX
-    </div>
-</footer>
-
 </body>
 </html>

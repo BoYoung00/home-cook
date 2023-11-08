@@ -15,7 +15,7 @@
     request.setCharacterEncoding("UTF-8");
 
     PrintWriter script = response.getWriter();
-    String id = (String) request.getParameter("id");;
+    String id = (String) request.getParameter("id");
     String password = (String) request.getParameter("password");
     String name = (String) request.getParameter("name");
     String email = (String) request.getParameter("email");

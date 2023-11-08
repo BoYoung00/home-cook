@@ -11,10 +11,10 @@
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="Post.PostDao" %>
+<%@ page import="java.io.File" %>
 
 <%
     request.setCharacterEncoding("UTF-8");
-
     PrintWriter script = response.getWriter();
 
     // 서버에서 저장할 localhost 뒤에 붙는 위치
@@ -33,8 +33,6 @@
     String content = (String) multi.getParameter("content");
     String fileName = (String) multi.getParameter("fileName");
     String category = (String) multi.getParameter("category");
-
-//    String realFileName = (String) multi.getFilesystemName("fileBtn");
 
     // 로그인 섹션
     String userID = (String) session.getAttribute("userID");
@@ -64,4 +62,14 @@
         script.println("</script>");
         script.close();
     }
+
+    // 실제 폴더에 있는 이미지 파일 삭제
+    String oldFileName = (String) multi.getParameter("oldFileName");
+
+    File oldFile = new File(request.getServletContext().getRealPath(oldFileName));
+    if(updateResult > 0 && oldFile.exists()) {
+        System.out.println(oldFile.getAbsolutePath());
+        oldFile.delete();
+    }
+
 %>

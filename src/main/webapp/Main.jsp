@@ -322,30 +322,6 @@
             cursor: pointer;
             margin: 16px auto;
         }
-
-        /* footer */
-        footer{
-            display: flex;
-            background: #1f1f1f ;
-            padding: 30px;
-        }
-
-        footer > div:first-child{
-            flex: 3;
-            text-align: center;
-            color: #fff;
-        }
-
-        footer > div:last-child{
-            flex: 9;
-            color: #fff;
-        }
-
-        .footer_logo{
-            width: 200px;
-            height: 90px;
-
-        }
     </style>
 </head>
 <body>
@@ -524,12 +500,11 @@
     </ul>
 </div>
 
-
 <!-- 사이트 소개 글 -->
 <div class="main_text1" id="link_main_text1">
     <div class="service">
         <div class="fooh_photo">
-            <img src="Default/img/logo.png" alt="" width="400" height="400">
+            <img src="Default/img/main1.jpg" alt="" width="400" height="400">
         </div>
         <div class="contents2">
             <h2>집밥의 민족 소개글</h2>
@@ -546,18 +521,8 @@
             현명한 선택이 될 것입니다. <br>
         </div>
     </div>
-
-    <!-- footer 시작 -->
-    <footer>
-        <div>
-            <img src="img/logo.png" class="footer_logo">
-        </div>
-        <div>
-            CEO. 집밥의 민족 <br>
-            Addr. 부천대학교 컴퓨터 소프트웨어과.<br>
-            Tel. 010-XXXX-XXXX
-        </div>
-    </footer>
 </div>
+
+<jsp:include page="Default/Footer.jsp"></jsp:include>
 </body>
 </html>

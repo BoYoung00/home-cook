@@ -33,10 +33,23 @@
     </p>
     <p>
         <a href="Post_update.jsp?postId=<%=postId%>">수정</a>
-        <a href="Post_delete_action.jsp?postId=<%=postId%>">삭제</a>
+        <a href="#" onclick="confirmDelete(<%=postId%>)">삭제</a>
     </p>
     <hr>
     <img src="<%= post.getFileName() %>" alt="<%= post.getTitle() %>">
     <div><%= post.getContent() %></div>
+
+
+
+<%--    댓글--%>
+
+    <script>
+        // 삭제 여부
+        function confirmDelete(postId) {
+            if (confirm("정말 삭제하시겠습니까?")) {
+                window.location.href = "Post_delete_action.jsp?postId=" + postId;
+            }
+        }
+    </script>
 </body>
 </html>
