@@ -27,37 +27,15 @@
             color: #000;
         }
 
-        /* 글씨들 조정 */
-        h1{
-            font-size: 48px;
-            font-weight: 100;
-        }
-
-        .contents1{
-            font-size: 20PX;
-            font-weight: lighter;
-        }
-
-        .contents3{
-            font-size: 14px;
-            font-weight: 100;
-        }
-
-        .contents1_bold{
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        /*  상단 탭 (고정) */
+        /* header */
         .LOGO{
             width: 200px;
             height: 90px;
-
+            cursor: pointer;
         }
 
         .header_bg{
             background-color: #000;
-            /*position: fixed;*/
             top: 0;
             width: 100%;
             z-index: 100;
@@ -83,6 +61,7 @@
 
         .nav > li > a {
             color: #fff;
+            width: 100px;
         }
 
         /*로그아웃 버튼*/

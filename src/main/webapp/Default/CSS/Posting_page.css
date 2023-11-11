@@ -1,0 +1,88 @@
+*{
+    font-family: 'Hi Melody', sans-serif;
+}
+
+/* 포스팅 영역 */
+.posting_area{
+    width: 100%;
+    height: 1500px;
+    background-color: #FFFFE0;
+    position: absolute;
+    margin-left: -10px;
+}
+
+#postingForm {
+    text-align: center;
+    width: 1000px;
+    height: 600px;
+    margin-top: 150px;
+    margin: 150px auto auto auto;
+}
+
+.prImageFile{
+    float: left;
+}
+
+#title{
+    width: 88%;
+    height: 4%;
+    resize: none;
+}
+
+#content_container {
+    border: 1px solid black;
+    height: 700px;
+    overflow: auto;
+    background-color: #fff;
+}
+
+#category{
+    padding: 4px 20px 4px 20px;
+    margin-right: 10px;
+}
+
+#thumbnail {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
+
+textarea, textarea:focus {
+    border: none;
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    height: 70%;
+    font-size: 18px;
+    resize: none;
+    overflow: auto;
+}
+
+#image_container {
+    height: 250px;
+    width: 100%;
+    display: none
+}
+
+/* 글쓰기 버튼 */
+.ok_button{
+    font-size: 20px;
+    width: 100px;
+    height: 40px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #dc143c;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.clicked  {
+    background-color: #FFFFE0;
+    color: #dc143c;
+    border: 2px solid #dc143c;
+}

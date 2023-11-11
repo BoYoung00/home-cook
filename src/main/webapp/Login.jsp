@@ -3,7 +3,10 @@
 <!-- 최초 작성일 : 2023.10.10. -->
 <!-- 최초 변경일 : 2023.10.12. -->
 <!-- 목적 : 로그인 -->
-<!-- 개정 이력 : 김예지, 2023.10.12.(var. 01) -->
+<!-- 개정 이력 :
+김예지, 2023.10.10.(var. 01)
+김보영, 2023.10.12.(var. 02)
+-->
 <!-- 저작권 : 없음 -->
 
 <!DOCTYPE html>
@@ -17,129 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
     <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
 
-    <style>
-        /* 페이지 전체 css , 폰트 설정 */
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: 'Hi Melody', cursive;
-        }
-        /* 상단 탭 */
-        .tabSet{
-            margin: auto;
-            width: 400px;
-            height: 500px;
-        }
+    <link href="Default/CSS/Login.css" rel="stylesheet" type="text/css">
 
-        ul{
-            padding: 20px 0 0 0;
-            overflow: hidden;
-            margin: auto;
-        }
-
-        .tabs a{
-            text-decoration: none;
-            float: left;
-            border-radius: 10px 10px 0 0;
-            padding: 15px 75.6px;
-            background-color: #d3d3d3;
-            color: #000;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        a.on{
-            background-color: #FFFFE0;
-            color: black;
-        }
-
-        /* 패널 */
-        .panel.on{
-            display: block;
-            background-color: #FFFFE0;
-            margin: auto;
-            border-radius: 0px 0px 20px 20px;
-        }
-        .panel{
-            padding: 30px 30px;
-            font-size: 18px;
-            display: none;
-            margin: auto;
-            background-color: #FFFFE0;
-            border-radius: 0px 0px 20px 20px;
-            height: 500px;
-
-        }
-        /* 로고 */
-        img{
-            margin-left: 20%;
-            width: 200px;
-            height: 100px;
-        }
-
-        /* 텍스트 */
-        p{
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .Sign_up{
-            margin-top: 30px;
-        }
-
-        .login_text{
-            font-size: 40px;
-        }
-
-        /* 회원가입 하러 가기 */
-        #Sign_up_but {
-            font-size: 20px;
-            font-weight: bold;
-            text-decoration: underline;
-            color: black;
-        }
-
-        #Sign_up_but:hover, logo:hover{
-            cursor: pointer;
-        }
-
-        .manager_sign_up{
-            margin-top: 60px;
-        }
-
-
-        /* 텍스트 박스 */
-        .login_textbox{
-            margin-top: 35px;
-            border: 0.5px solid #dc143c;
-            border-radius: 15px 15px 15px 15px;
-            width: 328px;
-            height: 40px;
-            padding-left: 10px;
-        }
-
-
-        /* 버튼 */
-        .ok_button{
-            font-size: 20px;
-            width: 100px;
-            height: 40px;
-            margin: auto;
-            margin-top: 70px;
-            background-color: #dc143c;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-        }
-        /* 버튼 클릭시  */
-        .clicked  {
-            background-color: #FFFFE0;
-            color: #dc143c;
-            border: 2px solid #dc143c;
-        }
-    </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var tabLinks = document.querySelectorAll(".tabs a");
@@ -202,7 +84,7 @@
     <div class="panels">
         <div class="panel on">
             <!-- 사용자 로그인 페이지 -->
-            <form class="user" action="Login_user_action.jsp" method="post">
+            <form class="user" action="Action/Login_user_action.jsp" method="post">
                 <img src="Default/img/logo.png" alt="로고" class="logo">
                 <p class="login_text">사용자 로그인</p>
                 <!-- 텍스트 박스 -->
@@ -219,7 +101,7 @@
         </div>
         <div class="panel">
             <!-- 관리자 로그인 페이지 -->
-            <form class="manager" action="Manager_login_action.jsp" method="post">
+            <form class="manager" action="Action/Manager_login_action.jsp" method="post">
                 <img src="Default/img/logo.png" alt="로고" class="logo">
                 <p class="login_text">관리자 로그인</p>
                 <!-- 텍스트 박스 -->

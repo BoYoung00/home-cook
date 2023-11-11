@@ -1,3 +1,12 @@
+<!-- 최초 작성자 : 김보영 -->
+<!-- 최초 작성일 : 2023.11.07. -->
+<!-- 최초 변경일 : 2023.11.07. -->
+<!-- 목적 : 게시글 수정 페이지 -->
+<!-- 개정 이력 :
+김보영, 2023.11.07.(var. 01)
+-->
+<!-- 저작권 : 없음 -->
+
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="User.UserDao" %>
 <%@ page import="Post.PostDto" %>
@@ -14,122 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
     <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <link href="Default/CSS/Post_update.css" rel="stylesheet" type="text/css">
 
-    <style>
-        *{
-            font-family: 'Hi Melody', sans-serif;
-        }
-        /* 헤더 */
-        .LOGO{
-            width: 200px;
-            height: 90px;
-        }
-
-        .header_bg{
-            background-color: #000;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        .header{
-            width:80%;
-            margin-left: 50px;
-            height: 86px;
-        }
-
-        /* 포스팅 영역 */
-        .posting_area{
-            width: 100%;
-            height: 1500px;
-            background-color: #FFFFE0;
-            position: absolute;
-            margin-left: -10px;
-        }
-
-        form {
-            text-align: center;
-            width: 1000px;
-            height: 600px;
-            margin-top: 150px;
-            margin: 150px auto auto auto;
-
-        }
-        .prImageFile{
-            float: left;
-        }
-
-        #title{
-            width: 88%;
-            height: 4%;
-            resize: none;
-
-        }
-
-        #content_container {
-            border: 1px solid black;
-            height: 700px;
-            overflow: auto;
-            background-color: #fff;
-        }
-
-
-        #category{
-            padding: 4px 20px 4px 20px;
-            margin-right: 10px;
-        }
-
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            margin: auto;
-            display: none;
-        }
-
-        textarea, textarea:focus {
-            border: none;
-            outline: none;
-        }
-
-        textarea {
-            width: 100%;
-            height: 70%;
-            font-size: 18px;
-            resize: none;
-            overflow: auto;
-        }
-
-        #image_container {
-            height: 250px;
-            width: 100%;
-        }
-
-        /* 글쓰기 버튼 */
-        .ok_button{
-            font-size: 20px;
-            width: 100px;
-            height: 40px;
-            margin: auto;
-            margin-top: 20px;
-            background-color: #dc143c;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-        }
-
-        .clicked  {
-            background-color: #FFFFE0;
-            color: #dc143c;
-            border: 2px solid #dc143c;
-        }
-
-        #fileBtn {
-        }
-    </style>
 </head>
 <body>
 <%
@@ -168,15 +63,12 @@
 %>
 
 <!-- 헤더 -->
-<div class="header_bg">
-    <div class="header" id="link_header">
-        <p><img src="Default/img/logo.png" class="LOGO"></p>
-    </div>
-</div>
+<jsp:include page="Default/Header.jsp"></jsp:include>
+
 <!-- 포스팅 영역 -->
 <div class="posting_area">
-    <form action="Post_update_action.jsp?postId=<%=post.getPostId()%>" method="post" enctype="multipart/form-data">
-        <h1 style="text-align: center;">글 수정</h1>
+    <form action="Action/Post_update_action.jsp?postId=<%=post.getPostId()%>" method="post" enctype="multipart/form-data">
+        <h1 style="text-align: center; margin-bottom: 50px;">글 수정</h1>
         <select name="category" id="category">
             <option value="food">식사</option>
             <option value="dessert">디저트</option>

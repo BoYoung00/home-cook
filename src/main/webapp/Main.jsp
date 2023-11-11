@@ -1,3 +1,13 @@
+<!-- 최초 작성자 : 김예지 -->
+<!-- 최초 작성일 : 2023.10.15. -->
+<!-- 최초 변경일 : 2023.10.17. -->
+<!-- 목적 : 메인 페이지 -->
+<!-- 개정 이력 :
+김예지, 2023.10.15.(var. 01)
+김보영, 2023.10.17.(var. 02)
+-->
+<!-- 저작권 : 없음 -->
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="Post.PostDao" %>
@@ -14,318 +24,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
     <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
 
-    <style>
-        *{
-            font-family: 'Hi Melody', sans-serif;
-            list-style: none;
-            text-decoration: none;
-            border-collapse: collapse;
-            margin: 0px;
-            padding: 0px;
-            color: #000;
-        }
-
-        /* 글씨들 조정정 */
-        h1{
-            font-size: 48px;
-            font-weight: 100;
-        }
-
-        .contents1{
-            font-size: 20PX;
-            font-weight: lighter;
-        }
-
-        .contents3{
-            font-size: 14px;
-            font-weight: 100;
-        }
-
-        .contents1_bold{
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        /*  상단 탭 (고정) */
-        .LOGO{
-            width: 200px;
-            height: 90px;
-            cursor: pointer;
-        }
-
-        .header_bg{
-            background-color: #000;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        .header{
-            display: flex;
-            width:80%;
-            margin: auto;
-            height: 86px;
-        }
-
-        .nav{
-            display: flex;
-            justify-content: flex-end;
-            line-height: 86px;
-            width: calc(1280px - 300px);
-        }
-
-        .nav > li {
-            margin-left:64px ;
-        }
-
-        .nav > li > a {
-            color: #fff;
-        }
-
-        /*로그아웃 버튼*/
-        #logout {
-            font-family: 'Hi Melody', sans-serif;
-            font-size: 16px;
-            background-color: transparent;
-            color: white;
-            padding-left: 50px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* 상단 인트로 */
-        .intro_bg{
-            width: 100%;
-            height: 718px;
-            background-color: lightblue;
-            padding-top: 86px;
-        }
-
-        .intro_text{
-            width: 100%;
-            margin: 231px auto 231px auto;
-            text-align: center;
-        }
-
-        .intro_text > h1 {
-            color: #fff;
-        }
-
-
-        /* 생활비 소개글 */
-        .amount{
-            position: relative;
-            top: -66px;
-            display: flex;
-            width: 1280px;
-            background-color: #fff;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            margin: auto;
-        }
-
-        .amount>li{
-            flex: 1;
-            height: 132px;
-        }
-
-        .amount> li > div{
-            text-align: center;
-            margin-top: 37px;
-            height: 57px;
-        }
-
-        .amount > li > div:not(:last-child){
-            border-right: 1px solid #E1E1E1;
-
-        }
-
-        .result{
-            font-size: 24PX;
-        }
-
-        /* food Preview */
-
-        .food{
-            height: 601px;
-            margin-top: -132px;
-            background: #f1f3f3;
-        }
-
-        .food > h1{
-            padding-top: 116px;
-            text-align: center;
-        }
-
-        .Preview{
-            white-space: nowrap; /* 요소가 가로로 나란히 정렬되도록 설정 */
-            display: flex;
-            width: 1280px;
-            height: 302px;
-            margin: auto;
-        }
-
-        .Preview > .imgHoverEvent{
-            flex: 1;
-            height: 302px;
-            margin-top: 49px;
-            background: #000;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        .Preview > .imgHoverEvent:not(:last-child){
-            margin-right: 20px;
-        }
-
-        .imgHoverEvent .imgBox{
-            width: 210px;
-            text-align: center;
-            /*background:url(http://gahyun.wooga.kr/portfolio/triple/resources/img/city00.jpg);*/
-            /*no-repeat: 50% 50%;*/
-            background-size: auto 100%;
-            margin: auto;
-            letter-spacing: -1px;
-            padding-top: 5px;
-            color: #fff;
-        }
-
-        /*미리보기 이미지 크기*/
-        .preview_img {
-            position: absolute;
-            max-width: 300px;
-            height: auto;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-
-        .imgHoverEvent .hoverBox{
-            width: 441px;
-            height: 150px;
-            line-height: 30px;
-            position: relative;
-            bottom: -154px;
-        }
-
-        /* hoverbox 안에 제목과 내용 */
-        .hoverBox p.p1{
-            text-align:center;
-            font-size:18px;
-            color: #fff;
-            margin-right: 20px;
-        }
-        .hoverBox p.p2{
-            color: #fff;
-            text-align:center;
-            margin-top: 20px;
-            margin-right: 20px;
-
-        }
-        /* hover 이벤트 */
-        .event1 .hoverBox{
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 5%,rgba(255,255,255,1) 90%);
-            transform: translateY(70%);
-            transition: 0.5s;
-            opacity: 0;
-        }
-
-        .event1:hover .hoverBox{
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .event1:hover { cursor: pointer; }
-
-        .dessert{
-            height: 601px;
-            width: 100%;
-            background: #fff;
-        }
-
-        .dessert > h1{
-            padding-top: 60px;
-            text-align: center;
-        }
-
-        .drink{
-            height: 601px;
-            background: #f1f3f3;
-            margin-top: -60px;
-            margin-bottom: -20px;
-        }
-
-        .drink > h1{
-            padding-top: 60px;
-            text-align: center;
-        }
-
-        /* 더보기 */
-        .show_more{
-            position: relative;
-            top: 10px;
-            left: 1300px;
-        }
-
-        /* main_text1 */
-
-        .main_text1 > h1{
-            padding-top: 50px;
-            text-align: center;
-        }
-
-        .main_text1 > .contents1{
-            text-align: center;
-        }
-
-        .service{
-            width: 1280px;
-            display: flex;
-            margin: 49px auto;
-            height: 427px;
-            /* background: skyblue; */
-        }
-
-        .service > .contents2{
-            padding: 20px;
-        }
-
-        .service > .contents2 >h2{
-            margin-bottom: 27px;
-        }
-
-        .main_text2 > ul {
-            display: flex;
-            padding-top: 138px;
-        }
-
-        .main_text2 > ul > li{
-            flex: 1;
-            text-align: center;
-        }
-
-        .main_text2 > ul > li > div,
-        .main_text2 > ul > li > div > h1{
-            color: #fff;
-        }
-
-        .more2 {
-            width: 220px;
-            height: 40px;
-            border: 1px solid #fff;
-            color: #fff;
-            line-height: 40px;
-            cursor: pointer;
-            margin: 16px auto;
-        }
-    </style>
+    <link href="Default/CSS/Main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
 <%
     // 로그인 섹션
     String userID = null;
@@ -364,7 +65,7 @@
                     } else {
                     %>
                         <li><a href="#">마이페이지</a></li>
-                        <form action="Logout_action.jsp" method="post">
+                        <form action="Action/Logout_action.jsp" method="post">
                             <li><a><input type="submit" id="logout" value="로그아웃"></a></li>
                         </form>
                     <% } %>
@@ -407,7 +108,6 @@
 </ul>
 
 <!-- 식사 레시피 미리보기 -->
-
 <div class="food" id="link_food">
     <h1>식사 레시피</h1>
     <%--    식사 목록 더보기--%>

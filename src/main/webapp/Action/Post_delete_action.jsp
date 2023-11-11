@@ -24,7 +24,7 @@
     if (userID == null ) {
         script.println("<script>");
         script.println("alert('글 삭제는 로그인 후에 사용해주세요.')");
-        script.println("location.href='Login.jsp'");
+        script.println("location.href='../Login.jsp'");
         script.println("</script>");
         script.close();
     }
@@ -42,7 +42,7 @@
         if (delete == 1) {
             script.println("<script>");
             script.println("alert('게시글 삭제가 완료되었습니다.')");
-            script.println("location.href='Main.jsp'");
+            script.println("location.href='../Main.jsp'");
             script.println("</script>");
             script.close();
         } else {

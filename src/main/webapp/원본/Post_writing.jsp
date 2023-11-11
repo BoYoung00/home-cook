@@ -60,7 +60,7 @@
   }
 %>
 
-<form action="../Posting_action.jsp" method="post" enctype="multipart/form-data">0
+<form action="../Action/Posting_action.jsp" method="post" enctype="multipart/form-data">0
   <h1 style="text-align: center;">글 쓰기</h1>
   <input class="prImageFile" name="imageFile" type="file" id="image" accept="image/*" onchange="setThumbnail(event)" />
   <select name="category" id="category">

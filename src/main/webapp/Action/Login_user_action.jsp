@@ -19,7 +19,7 @@
     if (userID != null) {
         script.println("<script>");
         script.println("alert('이미 로그인 되어있습니다.')");
-        script.println("location.href='Main.jsp'");
+        script.println("location.href='../Main.jsp'");
         script.println("</script>");
         script.close();
     }
@@ -33,7 +33,7 @@
     if (result == 1) {
         session.setAttribute("userID", id);
         script.println("<script>");
-        script.println("location.href='Main.jsp'");
+        script.println("location.href='../Main.jsp'");
         script.println("</script>");
         script.close();
     } else if (result == 0) {

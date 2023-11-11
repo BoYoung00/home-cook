@@ -1,6 +1,16 @@
-<%@ page import="Post.PostDao" %>
-<%@ page import="Post.PostDto" %>
+<!-- 최초 작성자 : 김보영 -->
+<!-- 최초 작성일 : 2023.10.25. -->
+<!-- 최초 변경일 : 2023.11.11. -->
+<!-- 목적 : 게시글 조회 페이지 -->
+<!-- 개정 이력 :
+김보영, 2023.10.25.(var. 01)
+김보영, 2023.11.11.(var. 02)
+-->
+<!-- 저작권 : 없음 -->
+
 <%@ page import="User.UserDao" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Post.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -14,6 +24,13 @@
     // 작성자 이름 찾기
     UserDao userDao = new UserDao();
     String userName = userDao.selectUserName(post.getPostUserId());
+
+    // 댓글 목록 가져오기
+    CommentDao commentDao = new CommentDao();
+    List<CommentDto> commentList = commentDao.selectCommentAll(postId);
+
+    // 대댓글 목록 가져오기
+    ReplyCommentDao replyDao = new ReplyCommentDao();
 %>
 <!doctype html>
 <html lang="ko">
@@ -23,6 +40,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
+    <link href="Default/CSS/Post_view.css" rel="stylesheet" type="text/css">
 
     <title><%=post.getTitle()%></title>
 </head>
@@ -39,9 +57,54 @@
     <img src="<%= post.getFileName() %>" alt="<%= post.getTitle() %>">
     <div><%= post.getContent() %></div>
 
+<%-- 댓글 --%>
+    <div class="comments">
+        <h2>댓글</h2>
 
+        <!-- 댓글 목록 -->
+        <ul>
+            <li>
+                <% for(CommentDto comment : commentList) { %>
+                    <%-- 댓글들--%>
+                    <p>
+                        <%= comment.getUserId() %> (<%= comment.getCreatedAt()%>) : <%= comment.getCommentText() %> &nbsp;
+                        <button onclick="toggleReplyForm()">대댓글 작성</button>
+                    </p>
+                    <form id="replyForm" action="AddReplyServlet" method="post" style="display: none; float: right; margin-right: 20px;">
+                        <textarea name="reply" placeholder="대댓글을 입력하세요"></textarea>
+                        <input type="hidden" name="commentId" value="1">
+                        <input type="submit" value="대댓글 작성">
+                    </form>
+                    <%-- 대댓글들--%>
+                    <ul>
+                        <%
+                            int commentId = comment.getCommentId(); // 해당 댓글번호
+                            List<ReplyCommentDto> replyList = replyDao.selectReplyAll(comment.getCommentId()); // 대댓글 가져오기
+                            for(ReplyCommentDto reply : replyList) {
+                        %>
+                        <li>
+                            <p><%= reply.getUserId() %> (<%= reply.getCreatedAt()%>) : <%= reply.getReplyText() %></p>
+                        </li>
+                    </ul>
+                        <% } // reply for
+                    } // comment for %>
+            </li>
+        </ul>
 
-<%--    댓글--%>
+        <form action="AddCommentServlet" method="post">
+            <textarea name="comment" placeholder="댓글을 입력하세요"></textarea>
+            <input type="submit" value="댓글 작성">
+        </form>
+    </div>
+
+    <script>
+        // 대댓글 작성 눌렀을 때 나타내기
+        function toggleReplyForm(commentId) {
+            var replyForm = document.getElementById("replyForm-" + commentId);
+            replyForm.style.display = replyForm.style.display === "none" ? "block" : "none";
+        }
+    </script>
+
 
     <script>
         // 삭제 여부

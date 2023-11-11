@@ -1,11 +1,19 @@
 package Post;
 
-public class replyCommentDto {
+public class ReplyCommentDto {
     private int replyId;
     private int parentCommentId;
     private String userId;
     private String replyText;
     private String createdAt;
+
+    public ReplyCommentDto(int replyId, int parentCommentId, String userId, String replyText, String createdAt) {
+        this.replyId = replyId;
+        this.parentCommentId = parentCommentId;
+        this.userId = userId;
+        this.replyText = replyText;
+        this.createdAt = createdAt;
+    }
 
     public int getReplyId() {
         return replyId;

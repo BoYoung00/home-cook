@@ -7,6 +7,14 @@ public class CommentDto {
     private String commentText;
     private String createdAt;
 
+    public CommentDto(int commentId, int postId, String userId, String commentText, String createdAt) {
+        this.commentId = commentId;
+        this.postId = postId;
+        this.userId = userId;
+        this.commentText = commentText;
+        this.createdAt = createdAt;
+    }
+
     public int getCommentId() {
         return commentId;
     }

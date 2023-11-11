@@ -49,7 +49,7 @@
     if (result == 1) {
         script.println("<script>");
         script.println("alert('글 작성이 완료되었습니다.')");
-        script.println("location.href='Post_list.jsp?category=" + category + "'");
+        script.println("location.href='../Post_list.jsp?category=" + category + "'");
         script.println("</script>");
         script.close();
     } else {

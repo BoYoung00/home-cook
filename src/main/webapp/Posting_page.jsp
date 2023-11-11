@@ -1,137 +1,29 @@
-<%@ page import="java.io.PrintWriter" %><%--
-  Created by IntelliJ IDEA.
-  User: Bo
-  Date: 2023-10-25
-  Time: 오후 6:39
-  To change this template use File | Settings | File Templates.
---%>
+<!-- 최초 작성자 : 김예지 -->
+<!-- 최초 작성일 : 2023.10.25. -->
+<!-- 최초 변경일 : 2023.10.25. -->
+<!-- 목적 : 게시글 작성 페이지 -->
+<!-- 개정 이력 :
+김보영, 2023.10.25.(var. 01)
+김보영, 2023.10.25.(var. 02)
+-->
+<!-- 저작권 : 없음 -->
+
+<%@ page import="java.io.PrintWriter" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>포스팅 페이지</title>
-    <link rel="stylesheet" href="posting_page.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
     <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <link href="Default/CSS/Posting_page.css" rel="stylesheet" type="text/css">
 
-    <style>
-        *{
-            font-family: 'Hi Melody', sans-serif;
-
-        }
-        /* 헤더 */
-        .LOGO{
-            width: 200px;
-            height: 90px;
-        }
-
-        .header_bg{
-            background-color: #000;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        .header{
-            width:80%;
-            margin-left: 50px;
-            height: 86px;
-        }
-
-        /* 포스팅 영역 */
-        .posting_area{
-            width: 100%;
-            height: 1500px;
-            background-color: #FFFFE0;
-            position: absolute;
-            margin-left: -10px;
-        }
-
-        form {
-            text-align: center;
-            width: 1000px;
-            height: 600px;
-            margin-top: 150px;
-            margin: 150px auto auto auto;
-
-        }
-        .prImageFile{
-            float: left;
-        }
-
-        #title{
-            width: 88%;
-            height: 4%;
-            resize: none;
-
-        }
-
-        #content_container {
-            border: 1px solid black;
-            height: 700px;
-            overflow: auto;
-            background-color: #fff;
-        }
-
-
-        #category{
-            padding: 4px 20px 4px 20px;
-            margin-right: 10px;
-        }
-
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            margin: auto;
-        }
-
-        textarea, textarea:focus {
-            border: none;
-            outline: none;
-        }
-
-        textarea {
-            width: 100%;
-            height: 70%;
-            font-size: 18px;
-            resize: none;
-            overflow: auto;
-        }
-
-        #image_container {
-            height: 250px;
-            width: 100%;
-            display: none
-        }
-
-        /* 글쓰기 버튼 */
-        .ok_button{
-            font-size: 20px;
-            width: 100px;
-            height: 40px;
-            margin: auto;
-            margin-top: 20px;
-            background-color: #dc143c;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-        }
-
-        .clicked  {
-            background-color: #FFFFE0;
-            color: #dc143c;
-            border: 2px solid #dc143c;
-        }
-    </style>
+    <title>게시물 작성</title>
 </head>
 <body>
 <%
@@ -153,15 +45,12 @@
 %>
 
 <!-- 헤더 -->
-<div class="header_bg">
-    <div class="header" id="link_header">
-        <p><img src="Default/img/logo.png" class="LOGO"></p>
-    </div>
-</div>
+<jsp:include page="Default/Header.jsp"></jsp:include>
+
 <!-- 포스팅 영역 -->
 <div class="posting_area">
-    <form action="Posting_action.jsp" method="post" enctype="multipart/form-data">
-        <h1 style="text-align: center;">글 쓰기</h1>
+    <form action="Action/Posting_action.jsp" method="post" enctype="multipart/form-data" id="postingForm">
+        <h1 style="text-align: center; margin-bottom: 50px;">글 쓰기</h1>
         <select name="category" id="category">
             <option value="food">식사</option>
             <option value="dessert">디저트</option>
@@ -203,42 +92,41 @@
 
 <%--이미지 미리보기 기능--%>
 <script>
-    $(function () {
-        function setThumbnail(event) {
-            var reader = new FileReader();
-            var img = $("<img />");
-            var container = $("#image_container");
+    function setThumbnail(event) {
+        var reader = new FileReader();
+        var img = document.createElement("img");
+        var container = document.getElementById("image_container");
 
-            reader.onload = function (event) {
-                img.attr("src", event.target.result);
+        reader.onload = function (event) {
+            img.src = event.target.result;
 
-                img.on("load", function () {
-                    var maxWidth = container.width();
-                    var maxHeight = container.height();
-                    var width = img.width();
-                    var height = img.height();
-                    var ratio = 1;
+            img.onload = function () {
+                var maxWidth = container.offsetWidth;
+                var maxHeight = container.offsetHeight;
+                var width = img.width;
+                var height = img.height;
+                var ratio = 1;
 
-                    if (width > maxWidth || height > maxHeight) {
-                        ratio = Math.min(maxWidth / width, maxHeight / height);
-                    }
-                    img.css({
-                        width: width * ratio + "px",
-                        height: height * ratio + "px"
-                    });
-                });
-
-                container.css("display", "block");
-                container.empty(); // 이미지를 새로운 이미지로 대체
-                container.append(img);
+                if (width > maxWidth || height > maxHeight) {
+                    ratio = Math.min(maxWidth / width, maxHeight / height);
+                }
+                img.style.width = width * ratio + "px";
+                img.style.height = height * ratio + "px";
             };
-            reader.readAsDataURL(event.target.files[0]);
-        }
 
-        $("#image").change(function (event) {
+            container.style.display = "block";
+            container.innerHTML = ""; // 이미지를 새로운 이미지로 대체
+            container.appendChild(img);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    var imageInput = document.getElementById("image");
+    if (imageInput) {
+        imageInput.addEventListener("change", function (event) {
             setThumbnail(event);
         });
-    });
+    }
 </script>
 
 <%--옵션 자동 선택--%>

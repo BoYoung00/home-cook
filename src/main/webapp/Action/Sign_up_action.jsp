@@ -32,7 +32,7 @@
         if (insert == 1) {
             script.println("<script>");
             script.println("alert('회원가입에 성공하셨습니다.')");
-            script.println("location.href='Login.jsp'");
+            script.println("location.href='../Login.jsp'");
             script.println("</script>");
             script.close();
         } else {

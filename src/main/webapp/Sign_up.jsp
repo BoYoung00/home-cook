@@ -1,3 +1,13 @@
+<!-- 최초 작성자 : 김예지 -->
+<!-- 최초 작성일 : 2023.10.04. -->
+<!-- 최초 변경일 : 2023.10.11. -->
+<!-- 목적 : 회원가입 페이지 -->
+<!-- 개정 이력 :
+김보영, 2023.10.04.(var. 01)
+김보영, 2023.10.11.(var. 02)
+-->
+<!-- 저작권 : 없음 -->
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -6,87 +16,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
   <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
-
+  <link href="Default/CSS/Sign_up.css" rel="stylesheet" type="text/css">
   <title>회원가입</title>
-<%--  <link rel="stylesheet" href="Sign_up.css">--%>
-
-  <style>
-    *{
-      font-family: 'Hi Melody', cursive;
-    }
-
-    .Sign_up_page{
-      margin: auto;
-      width: 400px;
-      height: 700px;
-      /* border: 7px solid #dc143c; */
-      border-radius: 20px 20px 20px 20px;
-      background-color: #FFFFE0;
-    }
-
-    img{
-      margin-left: 100px;
-      width: 200px;
-      height: 100px;
-    }
-
-    p{
-      margin: 1px;
-      text-align: center;
-      font-size: 30px;
-      color: #424242;
-      word-spacing:20px;
-    }
-
-    .signup_text{
-      font-size: 16px;
-      margin-top: 35px;
-      margin-left: 20px;
-      border: 0.5px solid #dc143c;
-      border-radius: 15px 15px 15px 15px;
-      width: 340px;
-      height: 40px;
-      padding-left: 10px;
-    }
-
-    .checkbox-container {
-      display: inline-block;
-      margin-left: 50px;
-      margin-right: 10px;
-      margin-top: 40px;
-    }
-
-    .checkbox-container input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-    }
-
-    .ok_button{
-      font-size: 20px;
-      width: 100px;
-      height: 40px;
-      margin: auto;
-      margin-top: 20px;
-      background-color: #dc143c;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-    }
-
-    .clicked  {
-      background-color: #FFFFE0;
-      color: #dc143c;
-      border: 2px solid #dc143c;
-    }
-  </style>
 </head>
 <body>
 <div class="Sign_up_page">
   <img src="img/logo.png">
   <p>회 원 가 입</p>
-  <form action="Sign_up_action.jsp" method="post">
+  <form action="Action/Sign_up_action.jsp" method="post">
     <input type="text" class="signup_text" id="name" name="name" placeholder="  이름을 입력해주세요." size="50" required
            oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
 

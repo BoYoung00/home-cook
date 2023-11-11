@@ -1,3 +1,13 @@
+<!-- 최초 작성자 : 김예지 -->
+<!-- 최초 작성일 : 2023.10.25. -->
+<!-- 최초 변경일 : 2023.10.25. -->
+<!-- 목적 : 게시글 리스트 페이지 -->
+<!-- 개정 이력 :
+김예지, 2023.10.25.(var. 01)
+김보영, 2023.10.25.(var. 02)
+-->
+<!-- 저작권 : 없음 -->
+
 <%@ page import="Post.PostDao" %>
 <%@ page import="Post.PostDto" %>
 <%@ page import="User.UserDao" %>
@@ -10,187 +20,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="food_posts_list.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
     <link rel="icon" href="Default/img/icon.png" type="image/x-icon">
+    <link href="Default/CSS/Post_list.css" rel="stylesheet" type="text/css">
 
     <title>식사 게시물 목록</title>
 
-    <style>
-        *{
-            font-family: 'Hi Melody', sans-serif;
-            list-style: none;
-            text-decoration: none;
-            border-collapse: collapse;
-            margin: 0px;
-            padding: 0px;
-            color: #000;
-
-        }
-        /* header */
-        .LOGO{
-            width: 200px;
-            height: 90px;
-            cursor: pointer;
-        }
-
-        .header_bg{
-            background-color: #000;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        .header{
-            display: flex;
-            width:80%;
-            margin: auto;
-            height: 86px;
-        }
-
-        .nav{
-            display: flex;
-            justify-content: flex-end;
-            line-height: 86px;
-            width: calc(1280px - 300px);
-        }
-
-        .nav > li {
-            margin-left:64px ;
-        }
-
-        .nav > li >a {
-            color: #fff;
-        }
-
-        /*로그아웃 버튼*/
-        #logout {
-            font-family: 'Hi Melody', sans-serif;
-            font-size: 16px;
-            background-color: transparent;
-            color: white;
-            padding-left: 50px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* 페이지 상단부 */
-        .title{
-            width: 100%;
-            height: 180px;
-            background-color: #FFFFE0;
-            padding-top: 106px;
-
-        }
-
-        .title > h1{
-            text-align: center;
-            font-size: 50px;
-        }
-
-
-        /* 글쓰기 버튼 */
-        .ok_button{
-            font-size: 14px;
-            width: 80px;
-            height: 30px;
-            margin: auto;
-            margin-top: 50px;
-            background-color: #dc143c;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            margin-right: 200px;
-            position: absolute;
-            right: 0;
-        }
-
-        .clicked  {
-            background-color: #FFFFE0;
-            color: #dc143c;
-            border: 2px solid #dc143c;
-        }
-
-
-        /* 글 목록 */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #FFFFE0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .post-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            grid-auto-rows: 210px;
-            gap: 20px;
-            padding: 20px;
-            /* background-color: #FFFFE0; */
-        }
-
-        .post {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer; /* 이 부분을 추가하여 커서를 클릭로 변경 */
-        }
-
-        .thumbnail {
-            max-width: 100%;
-            max-height: 120px;
-            object-fit: cover;
-        }
-
-        .post-title {
-            font-size: 20px;
-            margin-top: 10px;
-        }
-
-        .post-description {
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        .first{
-            width: 1000px;
-            margin: auto;
-            /* background-color: #FFFFE0; */
-        }
-
-        /* footer */
-        footer {
-            position: fixed;
-            bottom: 0;
-            display: flex;
-            background: #1f1f1f;
-            padding: 30px;
-            width: 100%;
-        }
-
-        footer > div:first-child {
-            flex: 3;
-            text-align: center;
-            color: #fff;
-        }
-
-        footer > div:last-child {
-            flex: 9;
-            color: #fff;
-        }
-
-        .footer_logo {
-            width: 200px;
-            height: 90px;
-        }
-    </style>
 </head>
 <body>
 <%
