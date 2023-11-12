@@ -64,35 +64,41 @@
         <!-- 댓글 목록 -->
         <ul>
             <li>
-                <% for(CommentDto comment : commentList) { %>
+                <% for(CommentDto comment : commentList) {
+                    String userId = comment.getUserId(); // 작성자 아이디
+                    String createdAt = comment.getCreatedAt(); // 만든 일자
+                    String text = comment.getCommentText(); // 댓글 내용
+                    int commentId = comment.getCommentId(); // 댓글 번호
+                %>
                     <%-- 댓글들--%>
                     <p>
-                        <%= comment.getUserId() %> (<%= comment.getCreatedAt()%>) : <%= comment.getCommentText() %> &nbsp;
-                        <button onclick="toggleReplyForm()">대댓글 작성</button>
+                        <%= userId %> (<%= createdAt %>) : <%= text %> &nbsp;
+                        <button onclick="toggleReplyForm(<%= commentId %>)">대댓글 작성</button>
                     </p>
-                    <form id="replyForm" action="AddReplyServlet" method="post" style="display: none; float: right; margin-right: 20px;">
+                    <form id="replyForm-<%= commentId %>" action="Action/AddReply_action.jsp" method="post" style="display: none; margin-right: 20px;">
                         <textarea name="reply" placeholder="대댓글을 입력하세요"></textarea>
-                        <input type="hidden" name="commentId" value="1">
+                        <input type="hidden" name="postId" value="<%= postId %>"> <%-- 게시물 번호 보내기--%>
+                        <input type="hidden" name="commentId" value="<%= commentId %>"> <%-- 댓글 번호 보내기--%>
                         <input type="submit" value="대댓글 작성">
                     </form>
                     <%-- 대댓글들--%>
                     <ul>
                         <%
-                            int commentId = comment.getCommentId(); // 해당 댓글번호
-                            List<ReplyCommentDto> replyList = replyDao.selectReplyAll(comment.getCommentId()); // 대댓글 가져오기
+                            List<ReplyCommentDto> replyList = replyDao.selectReplyAll(commentId); // 대댓글 가져오기
                             for(ReplyCommentDto reply : replyList) {
                         %>
                         <li>
                             <p><%= reply.getUserId() %> (<%= reply.getCreatedAt()%>) : <%= reply.getReplyText() %></p>
                         </li>
+                        <% } // reply for %>
                     </ul>
-                        <% } // reply for
-                    } // comment for %>
+                <% } // comment for %>
             </li>
         </ul>
 
-        <form action="AddCommentServlet" method="post">
+        <form action="Action/AddComment_action.jsp" method="post">
             <textarea name="comment" placeholder="댓글을 입력하세요"></textarea>
+            <input type="hidden" name="postId" value="<%= postId %>"> <%-- 게시물 번호 보내기--%>
             <input type="submit" value="댓글 작성">
         </form>
     </div>

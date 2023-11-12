@@ -3,7 +3,9 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Action/AddComment_action.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Action" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Post_update.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Post_view.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>
   </component>

@@ -9,36 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/11/08 게시판 댓글 구현중">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Post_list.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Post_update.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Post_view.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Posting_page.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Sign_up.css" afterDir="false" />
+    <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/11/11 게시판 댓글 구현중">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Action/AddComment_action.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Action/AddReply_action.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Post/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Post/CommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Post/CommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Post/CommentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Post/replyCommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Post/ReplyCommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Post/replyCommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Post/ReplyCommentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Default/Header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Default/Header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login_user_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Login_user_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Logout_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Logout_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Manager_login_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Manager_login_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_delete_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Post_delete_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_update.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_update_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Post_update_action.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Posting_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Posting_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Posting_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Posting_page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Sign_up.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Sign_up.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Sign_up_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Sign_up_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/원본/Post_writing.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/원본/Post_writing.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +24,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="HTML File" />
         <option value="Class" />
         <option value="CSS File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -84,25 +60,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/intelliJ_save/Lecture_JSP",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4643678",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/intelliJ_save/Lecture_JSP&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4643678&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\intelliJ_save\home-cook\src\main\webapp\WEB-INF" />
@@ -224,7 +200,8 @@
       <workItem from="1699342473376" duration="6486000" />
       <workItem from="1699579296123" duration="19000" />
       <workItem from="1699584782124" duration="1241000" />
-      <workItem from="1699686330747" duration="12877000" />
+      <workItem from="1699686330747" duration="12926000" />
+      <workItem from="1699769491119" duration="5912000" />
     </task>
     <task id="LOCAL-00001" summary="23/10/26 중간평가 마무리">
       <created>1698251725508</created>
@@ -254,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699413124836</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="23/11/11 게시판 댓글 구현중">
+      <created>1699700586508</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699700586508</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +263,7 @@
     <MESSAGE value="23/10/26 중간평가 마무리" />
     <MESSAGE value="23/11/07 게시글 수정 구현" />
     <MESSAGE value="23/11/08 게시판 댓글 구현중" />
-    <option name="LAST_COMMIT_MESSAGE" value="23/11/08 게시판 댓글 구현중" />
+    <MESSAGE value="23/11/11 게시판 댓글 구현중" />
+    <option name="LAST_COMMIT_MESSAGE" value="23/11/11 게시판 댓글 구현중" />
   </component>
 </project>
