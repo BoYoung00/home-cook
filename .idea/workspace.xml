@@ -9,16 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/11/13 게시판 대댓글 구현완료">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/img/bookmark_B.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Default/img/bookmark_W.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Post_view1.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Post_view.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Post_view.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Default/Header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Default/Header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/원본/Post_writing.jsp" beforeDir="false" />
-    </list>
+    <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/11/13 게시글 뷰 UI 구현완료" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -210,7 +201,7 @@
       <workItem from="1699769491119" duration="6099000" />
       <workItem from="1699833732906" duration="1787000" />
       <workItem from="1699840667625" duration="1906000" />
-      <workItem from="1699842603537" duration="6907000" />
+      <workItem from="1699842603537" duration="7097000" />
     </task>
     <task id="LOCAL-00001" summary="23/10/26 중간평가 마무리">
       <created>1698251725508</created>
@@ -261,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699836416025</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="23/11/13 게시글 뷰 UI 구현완료">
+      <created>1699851774388</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699851774388</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +287,8 @@
     <MESSAGE value="23/11/11 게시판 댓글 구현중" />
     <MESSAGE value="23/11/12 게시판 대댓글 구현중" />
     <MESSAGE value="23/11/13 게시판 대댓글 구현완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="23/11/13 게시판 대댓글 구현완료" />
+    <MESSAGE value="23/11/13 게시판 대댓글 UI 구현완료" />
+    <MESSAGE value="23/11/13 게시글 뷰 UI 구현완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="23/11/13 게시글 뷰 UI 구현완료" />
   </component>
 </project>
