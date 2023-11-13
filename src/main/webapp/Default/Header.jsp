@@ -25,6 +25,7 @@
             margin: 0px;
             padding: 0px;
             color: #000;
+            user-select: none;
         }
 
         /* header */
@@ -98,14 +99,14 @@
             <%
                 if (userID == null) {
             %>
-            <li><a href="Login.jsp">로그인</a></li>
+                <li><a href="Login.jsp">로그인</a></li>
             <%
-            } else {
+                } else {
             %>
-            <li><a href="#">마이페이지</a></li>
-            <form action="Logout_action.jsp" method="post">
-                <li><a><input type="submit" id="logout" value="로그아웃"></a></li>
-            </form>
+                <li><a href="#">마이페이지</a></li>
+                <form action="Action/Logout_action.jsp" method="post">
+                    <li><a><input type="submit" id="logout" value="로그아웃"></a></li>
+                </form>
             <% } %>
         </ul>
     </div>
