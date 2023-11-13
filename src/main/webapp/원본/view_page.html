@@ -35,8 +35,8 @@
             </section>
             <!-- 수정 삭제 버튼 -->
             <span id="corre_delete">
-                    <input type="submit" value="수정" id= "myButton" class="corre">
-                    <input type="submit" value="삭제" id= "myButton" class="delete">
+                    <input type="submit" value="수정" id= "myButton1" class="corre">
+                    <input type="submit" value="삭제" id= "myButton2" class="delete">
             </span>
         </section>
         <!-- 본문내용 -->
@@ -48,7 +48,7 @@
         <!-- 댓글란 -->
         <section class="comments">
             <div class="comments_icon">
-                <input type="submit" value="댓글" id= "myButton" class="delete" onclick="toggleCommentBox()">
+                <input type="submit" value="댓글" id= "myButton3" class="delete" onclick="toggleCommentBox()">
             </div>
 
             <!--댓글 양식-->
@@ -72,7 +72,7 @@
                     <p class="writer">이름</p>
 
                     <textarea id="myTextarea" oninput="autoResize()" cols="30" rows="10"></textarea>
-                    <input type="submit" value="작성" id= "myButton" class="commit">
+                    <input type="submit" value="작성" id= "myButton4" class="commit">
                 </div>
             </div>
         </section>
@@ -100,18 +100,20 @@
                 }, 0);
             }
             // 버튼 클릭시 색 변환
-            const button = document.getElementById('myButton');
+            ['myButton1', 'myButton2', 'myButton3', 'myButton4'].forEach(buttonId => {
+                const button = document.getElementById(buttonId);
 
-            button.addEventListener('mousedown', function() {
-                button.classList.add('clicked');
-            });
+                button.addEventListener('mousedown', () => {
+                    button.classList.add('clicked');
+                });
 
-            button.addEventListener('mouseup', function() {
-                button.classList.remove('clicked');
-            });
+                button.addEventListener('mouseup', () => {
+                    button.classList.remove('clicked');
+                });
 
-            button.addEventListener('mouseout', function() {
-                button.classList.remove('clicked');
+                button.addEventListener('mouseout', () => {
+                    button.classList.remove('clicked');
+                });
             });
 
         </script>  
