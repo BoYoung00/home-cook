@@ -18,12 +18,12 @@ public class ReplyCommentDao {
     }
 
     // 대댓글 추가하기
-    public int insertReply(int commentId, String userId, String commentText) {
-        String sql = "INSERT INTO replyComment (postId, userId, replyText) VALUES (?, ?, ?)";
+    public int insertReply(int parentCommentId, String userId, String commentText) {
+        String sql = "INSERT INTO replyComment (parentCommentId, userId, replyText) VALUES (?, ?, ?)";
 
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, commentId);
+            pstmt.setInt(1, parentCommentId);
             pstmt.setString(2, userId);
             pstmt.setString(3, commentText);
 

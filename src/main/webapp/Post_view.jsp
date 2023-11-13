@@ -111,7 +111,6 @@
         }
     </script>
 
-
     <script>
         // 삭제 여부
         function confirmDelete(postId) {
