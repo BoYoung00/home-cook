@@ -1,0 +1,241 @@
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Hi Melody', sans-serif;
+
+}
+
+/* 헤더 */
+.LOGO{
+    width: 200px;
+    height: 90px;
+}
+
+.header_bg{
+    background-color: #000; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.header{
+    width:80%;
+    margin-left: 50px;
+    height: 86px;
+}
+
+/* 게시물 뷰 */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFE0; 
+    background-size: cover;
+    font-size: 24px;
+    color: #464646;
+}
+
+.container {
+    border: 2px solid #000;
+    border-radius: 5px;
+    width: 60%;
+    margin: 130px 30px;
+    padding: 40px;
+}
+
+.posting_title {
+    margin-bottom: 15px;
+    font-size: 40px;
+}
+
+.con {
+    display: flex;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #c9c9c9;
+    justify-content: space-between;
+}
+
+.info { display: flex;}
+
+.profile_info #pro_name {display: block;}
+
+
+#corre_delete {
+    justify-content: flex-end;
+}
+
+#corre {
+    padding: 0px 7px;
+    margin-right: 10px;
+}
+
+.text {
+    background: #ffffff;
+    height: 50%;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.comments .comments_icon {
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+
+
+.reply_1 {
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px dashed #c9c9c9;
+}
+
+#com_name {
+    display: block;
+}
+
+#reply_but {
+    margin-top: 10px;
+    width: 150px;
+    height: 40px;
+    background: #ffffff;
+    color: #FF5675;
+    border: 2px solid #FF5675;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Cute Font", cursive;
+    font-size: 22px;
+}
+
+#pre, #next {text-decoration: none; color: #464646;}
+
+ul, li {
+    list-style: none; 
+}
+
+.previous {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+.li1 {
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 8px;
+    color: #999999;
+}
+
+.list {margin-top: 50px; border-top: 1px solid #c9c9c9;}
+
+
+
+
+/* 북마크 */
+.bookmark {
+    cursor: pointer;
+    width: 35px;
+    margin-top: 15px;
+    float: right;
+  }
+
+/* 댓글 */
+
+.content_name{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#content {
+    font-size: 18px;
+}
+
+.reply_info {
+    margin-left: 5px;
+    position: relative;
+}
+
+.reply {
+    background: #ffffff;
+    padding: 10px;
+}
+
+/* 댓글 작성 */
+
+.writer{
+    margin-left: 11px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+textarea{
+    resize: none;
+    width: 720px;
+    height: 80px;
+    padding: 10px 10px;
+    font-size: 18px;
+}
+
+
+.commit{
+    font-size: 20px;
+    width: 60px;
+    height: 30px;
+    background-color: #dc143c;
+    color: #fff;
+    border: none; 
+    border-radius: 10px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    cursor: pointer; 
+    margin-bottom: 20px;
+    margin-right: 20px;
+    float: right;
+}
+
+/* 대댓글 */
+a{
+    float: right;
+    font-size: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 6px;
+
+}
+
+.content_in_content{
+    padding-left: 40px;
+    font-size: 18px;
+
+}
+
+/* 버튼 */
+
+.corre , .delete{
+    font-size: 20px;
+    width: 60px;
+    height: 30px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #dc143c;
+    color: #fff;
+    border: none; 
+    border-radius: 10px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    cursor: pointer; 
+}
+
+.clicked  {
+    background-color: #FFFFE0; 
+    color: #dc143c;
+    border: 2px solid #dc143c;
+}
