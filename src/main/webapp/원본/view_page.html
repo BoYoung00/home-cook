@@ -1,0 +1,123 @@
+<html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="view_page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+    <title>게시물 페이지</title>
+</head>
+<body>
+    <!-- 헤더 -->
+    <div class="header_bg">
+        <div class="header" id="link_header">
+            <p><img src="로고누끼.png" class="LOGO"></p>
+        </div>
+    </div>
+    <!-- 제목 -->
+    <section class="container">
+        <h1 class="posting_title">게시물 제목입니다</h1>
+        <!-- 작성자 이름과 날짜 -->
+        <section class="con">
+            <section class="info">
+                <div class="profile_info">
+                    <strong id="pro_name">
+                        <span>작성자</span>
+                    </strong>
+                    <span id="date">
+                        <span>2022-08-20 22:11</span>
+                    </span>
+                </div>
+            </section>
+            <!-- 수정 삭제 버튼 -->
+            <span id="corre_delete">
+                    <input type="submit" value="수정" id= "myButton1" class="corre">
+                    <input type="submit" value="삭제" id= "myButton2" class="delete">
+            </span>
+        </section>
+        <!-- 본문내용 -->
+        <section class="text">
+            <div id="text">본문 내용</div>
+        </section>
+        <img class="bookmark" src="bookmark_W.png" onclick="changeBookmark()">
+        <img class="bookmark" src="bookmark_B.png" style="display: none;" onclick="changeBookmark()">
+        <!-- 댓글란 -->
+        <section class="comments">
+            <div class="comments_icon">
+                <input type="submit" value="댓글" id= "myButton3" class="delete" onclick="toggleCommentBox()">
+            </div>
+
+            <!--댓글 양식-->
+            <div class="commentbox" id="commentbox">
+                <section class="reply">
+                    <div class="reply_info">
+                        <span class="content_name">이름</span>
+                        <span id="content">이 레시피 느낌 좋은데요?</span>
+                        <br>
+                        <a href="#myTextarea">대댓글작성</a>
+                    </div>
+                    <div class="content_in_content">                        
+                        <span class="content_name"> └ 이름</span>
+                        <span class="">저도 그렇게 생각해요</span>
+                    </div>
+
+                </section>
+                <br>
+                <!-- 댓글 입력 -->
+                <div>
+                    <p class="writer">이름</p>
+
+                    <textarea id="myTextarea" oninput="autoResize()" cols="30" rows="10"></textarea>
+                    <input type="submit" value="작성" id= "myButton4" class="commit">
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function toggleCommentBox() {
+                var commentBox = document.getElementById("commentbox");
+                commentBox.style.display = (commentBox.style.display === "none" || commentBox.style.display === "") ? "block" : "none";
+            }
+            // 북마크 이미지 변경 및 alert 창 생성
+            let currentBookmark = 0; // 이미지가 안 보이도록 초기값을 0으로 설정
+            const bookmarks = document.querySelectorAll('.bookmark');
+
+            function changeBookmark() {
+                bookmarks[currentBookmark].style.display = 'none';
+                currentBookmark = (currentBookmark + 1) % bookmarks.length;
+                bookmarks[currentBookmark].style.display = 'inline';
+
+                setTimeout(function () {
+                    if (currentBookmark === 0) {
+                        alert("북마크가 해제되었습니다.");
+                    } else if (currentBookmark === 1) {
+                        alert("북마크에 저장되었습니다.");
+                    }
+                }, 0);
+            }
+            // 버튼 클릭시 색 변환
+            ['myButton1', 'myButton2', 'myButton3', 'myButton4'].forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+
+                button.addEventListener('mousedown', () => {
+                    button.classList.add('clicked');
+                });
+
+                button.addEventListener('mouseup', () => {
+                    button.classList.remove('clicked');
+                });
+
+                button.addEventListener('mouseout', () => {
+                    button.classList.remove('clicked');
+                });
+            });
+
+        </script>  
+        
+    </section>
+</body>
+</html>
