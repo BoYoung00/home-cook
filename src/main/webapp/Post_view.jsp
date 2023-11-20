@@ -35,6 +35,10 @@
 
     // 대댓글 목록 가져오기
     ReplyCommentDao replyDao = new ReplyCommentDao();
+
+    // 북마크 유무
+    BookmarkDao bookmarkDao = new BookmarkDao();
+    boolean isBookmarked = bookmarkDao.isPostBookmarked(postId, loginUserId);
 %>
 <!doctype html>
 <html lang="ko">
@@ -81,8 +85,9 @@
                 <img src="<%= post.getFileName() %>" alt="<%= post.getTitle() %>">
                 <div id="text"><%= post.getContent() %></div>
             </section>
-            <img class="bookmark" src="Default/img/bookmark_W.png" onclick="changeBookmark()">
-            <img class="bookmark" src="Default/img/bookmark_B.png" style="display: none;" onclick="changeBookmark()">
+            <!-- 북마크 -->
+            <img class="bookmark" id="bookmark" src="<%= isBookmarked ? "Default/img/bookmark_B.png" : "Default/img/bookmark_W.png" %>" onclick="changeBookmark('<%= postId %>')" style="cursor: pointer;" onclick="changeBookmark(<%= postId %>)">
+<%--            <img class="bookmark" src="Default/img/bookmark_B.png" style="display: none;" onclick="changeBookmark(<%= postId %>)">--%>
 
             <!-- 댓글란 -->
             <section class="comments">
@@ -108,7 +113,7 @@
                             <br>
                             <span onclick="toggleCommentBox(<%= commentId %>)" id="reply_but">대댓글 작성</span>
                         </div>
-                        <form class="commentForm" id="commentbox-<%= commentId %>" action="Action/AddReply_action.jsp" method="post" style="display: none; margin-right: 10px;">
+                        <form class="commentForm" id="commentbox-<%= commentId %>" action="Action/Reply_add_action.jsp" method="post" style="display: none; margin-right: 10px;">
                             <textarea name="reply" placeholder="대댓글을 입력하세요"></textarea>
                             <input type="hidden" name="postId" value="<%= postId %>"> <%-- 게시물 번호 보내기--%>
                             <input type="hidden" name="commentId" value="<%= commentId %>"> <%-- 댓글 번호 보내기--%>
@@ -139,7 +144,7 @@
                     <% } else { %>
                         <p class="writer">로그인 후 사용해주세요.</p>
                     <% } %>
-                    <form action="Action/AddComment_action.jsp" method="post" class="commentForm">
+                    <form action="Action/Comment_add_action.jsp" method="post" class="commentForm">
                         <textarea name="comment" id="myTextarea" cols="30" rows="10" placeholder="댓글을 입력하세요"></textarea>
                         <input type="hidden" name="postId" value="<%= postId %>"> <%-- 게시물 번호 보내기--%>
                         <input type="submit" value="댓글 작성" id= "myButton4" class="commit">
@@ -166,22 +171,42 @@
             }
         }
 
-        // 북마크 이미지 변경 및 alert 창 생성
-        let currentBookmark = 0; // 이미지가 안 보이도록 초기값을 0으로 설정
-        const bookmarks = document.querySelectorAll('.bookmark');
+        // // 북마크 이미지 변경 및 jsp 이동
+        // let currentBookmark = 0; // 이미지가 안 보이도록 초기값을 0으로 설정
+        // const bookmarks = document.querySelectorAll('.bookmark');
+        //
+        // function changeBookmark(postId) {
+        //     bookmarks[currentBookmark].style.display = 'none';
+        //     currentBookmark = (currentBookmark + 1) % bookmarks.length;
+        //     bookmarks[currentBookmark].style.display = 'inline';
+        //
+        //     setTimeout(function () {
+        //         if (currentBookmark === 0) {
+        //             window.location.href = "Action/Bookmark_remove_action.jsp?postId=" + postId;
+        //             // alert("북마크가 해제되었습니다.");
+        //         } else if (currentBookmark === 1) {
+        //             window.location.href = "Action/Bookmark_add_action.jsp?postId=" + postId;
+        //             // alert("북마크에 저장되었습니다.");
+        //         }
+        //     }, 0);
+        // }
 
-        function changeBookmark() {
-            bookmarks[currentBookmark].style.display = 'none';
-            currentBookmark = (currentBookmark + 1) % bookmarks.length;
-            bookmarks[currentBookmark].style.display = 'inline';
+        let isBookmarked = <%= isBookmarked %>; // isBookmarked 값에 따라 초기 북마크 상태 설정
 
-            setTimeout(function () {
-                if (currentBookmark === 0) {
-                    alert("북마크가 해제되었습니다.");
-                } else if (currentBookmark === 1) {
-                    alert("북마크에 저장되었습니다.");
-                }
-            }, 0);
+        const bookmarkImage = document.querySelector('.bookmark');
+
+        function changeBookmark(postId) {
+            isBookmarked = !isBookmarked; // 북마크 상태를 토글
+
+            if (isBookmarked) {
+                bookmarkImage.src = "Default/img/bookmark_B.png"; // 북마크 추가 이미지로 변경
+                window.location.href = "Action/Bookmark_add_action.jsp?postId=" + postId;
+                // alert("북마크에 저장되었습니다.");
+            } else {
+                bookmarkImage.src = "Default/img/bookmark_W.png"; // 북마크 제거 이미지로 변경
+                window.location.href = "Action/Bookmark_remove_action.jsp?postId=" + postId;
+                // alert("북마크가 해제되었습니다.");
+            }
         }
 
         // 버튼 클릭시 색 변환
@@ -213,10 +238,8 @@
                 }
             }
         }
-
         // Main
         showEditButtons();
     </script>
-
 </body>
 </html>

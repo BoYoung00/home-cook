@@ -74,7 +74,7 @@
                         <%= userId %> (<%= createdAt %>) : <%= text %> &nbsp;
                         <button onclick="toggleReplyForm(<%= commentId %>)">대댓글 작성</button>
                     </p>
-                    <form id="replyForm-<%= commentId %>" action="Action/AddReply_action.jsp" method="post" style="display: none; margin-right: 20px;">
+                    <form id="replyForm-<%= commentId %>" action="Action/Reply_add_action.jsp" method="post" style="display: none; margin-right: 20px;">
                         <textarea name="reply" placeholder="대댓글을 입력하세요"></textarea>
                         <input type="hidden" name="postId" value="<%= postId %>"> <%-- 게시물 번호 보내기--%>
                         <input type="hidden" name="commentId" value="<%= commentId %>"> <%-- 댓글 번호 보내기--%>
@@ -95,7 +95,7 @@
             </li>
         </ul>
 
-        <form action="Action/AddComment_action.jsp" method="post">
+        <form action="Action/Comment_add_action.jsp" method="post">
             <textarea name="comment" placeholder="댓글을 입력하세요"></textarea>
             <input type="hidden" name="postId" value="<%= postId %>"> <%-- 게시물 번호 보내기--%>
             <input type="submit" value="댓글 작성">
