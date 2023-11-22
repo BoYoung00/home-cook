@@ -106,7 +106,66 @@ public class PostDao {
         return list;
     }
 
-    // 해당 게시글 조회
+    // 해당 유저가 쓴 게시글 가져오기
+    public List<PostDto> selectUserPostAll(String userId) {
+        List<PostDto> list = new ArrayList<>();
+
+        String sql = "select * from post where postUserId=? order by postId desc";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userId);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int postId = rs.getInt(1);
+                String postUserId = rs.getString(2);
+                String title = rs.getString(3);
+                String content = rs.getString(4);
+                String createdAt = rs.getString(5);
+                String fileName = rs.getString(6);
+                String category = rs.getString(7);
+
+                PostDto postDto = new PostDto(postId, postUserId, title, content, createdAt, fileName, category);
+                list.add(postDto);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    // 해당 번호 게시글 가져오기
+    public List<PostDto> selectPostIdAll(int postID) {
+        List<PostDto> list = new ArrayList<>();
+
+        String sql = "select * from post where postId=? order by postId desc";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postID);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int postId = rs.getInt(1);
+                String postUserId = rs.getString(2);
+                String title = rs.getString(3);
+                String content = rs.getString(4);
+                String createdAt = rs.getString(5);
+                String fileName = rs.getString(6);
+                String category = rs.getString(7);
+
+                PostDto postDto = new PostDto(postId, postUserId, title, content, createdAt, fileName, category);
+                list.add(postDto);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // 해당 게시글 내용 조회
     public PostDto selectView(int postId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT p.postID, p.postUserId, p.title, p.content, p.createdAt, p.fileName, p.category"
                     + " FROM post p, user u WHERE (postId=?) and (p.postUserId = u.userId)";

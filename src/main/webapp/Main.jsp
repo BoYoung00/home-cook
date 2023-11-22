@@ -64,7 +64,7 @@
                     <%
                     } else {
                     %>
-                        <li><a href="#">마이페이지</a></li>
+                        <li><a href="MyPage.jsp">마이페이지</a></li>
                         <form action="Action/Logout_action.jsp" method="post">
                             <li><a><input type="submit" id="logout" value="로그아웃"></a></li>
                         </form>

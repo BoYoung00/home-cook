@@ -51,7 +51,6 @@ public class BookmarkDao {
         return -1;
     }
 
-
     // 로그인 되어있는 유저 북마크 가져오기
     public List<BookmarkDto> selectBookmarkAll(String userId) {
         List<BookmarkDto> list = new ArrayList<>();
@@ -106,7 +105,6 @@ public class BookmarkDao {
                 e.printStackTrace();
             }
         }
-
         return false;
     }
 
