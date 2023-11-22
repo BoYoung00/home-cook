@@ -9,17 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/11/13 게시글 뷰 UI 구현완료">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Post/BookmarkDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Post/BookmarkDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Action/Bookmark_add_action.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Action/Bookmark_remove_action.jsp" afterDir="false" />
+    <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/11/20 게시물 북마크 구현 완료">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/User/TestClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Action/AddComment_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Comment_add_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Action/AddReply_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Reply_add_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_view1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_view1.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +208,10 @@
       <workItem from="1699855419391" duration="18000" />
       <workItem from="1700019506574" duration="33000" />
       <workItem from="1700183713581" duration="88000" />
-      <workItem from="1700439418617" duration="7940000" />
+      <workItem from="1700439418617" duration="8161000" />
+      <workItem from="1700457685770" duration="123000" />
+      <workItem from="1700458799965" duration="122000" />
+      <workItem from="1700616233329" duration="778000" />
     </task>
     <task id="LOCAL-00001" summary="23/10/26 중간평가 마무리">
       <created>1698251725508</created>
@@ -282,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699851818436</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="23/11/20 게시물 북마크 구현 완료">
+      <created>1700448269068</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700448269068</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +313,7 @@
     <MESSAGE value="23/11/13 게시판 대댓글 구현완료" />
     <MESSAGE value="23/11/13 게시판 대댓글 UI 구현완료" />
     <MESSAGE value="23/11/13 게시글 뷰 UI 구현완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="23/11/13 게시글 뷰 UI 구현완료" />
+    <MESSAGE value="23/11/20 게시물 북마크 구현 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="23/11/20 게시물 북마크 구현 완료" />
   </component>
 </project>

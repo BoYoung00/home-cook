@@ -171,26 +171,6 @@
             }
         }
 
-        // // 북마크 이미지 변경 및 jsp 이동
-        // let currentBookmark = 0; // 이미지가 안 보이도록 초기값을 0으로 설정
-        // const bookmarks = document.querySelectorAll('.bookmark');
-        //
-        // function changeBookmark(postId) {
-        //     bookmarks[currentBookmark].style.display = 'none';
-        //     currentBookmark = (currentBookmark + 1) % bookmarks.length;
-        //     bookmarks[currentBookmark].style.display = 'inline';
-        //
-        //     setTimeout(function () {
-        //         if (currentBookmark === 0) {
-        //             window.location.href = "Action/Bookmark_remove_action.jsp?postId=" + postId;
-        //             // alert("북마크가 해제되었습니다.");
-        //         } else if (currentBookmark === 1) {
-        //             window.location.href = "Action/Bookmark_add_action.jsp?postId=" + postId;
-        //             // alert("북마크에 저장되었습니다.");
-        //         }
-        //     }, 0);
-        // }
-
         let isBookmarked = <%= isBookmarked %>; // isBookmarked 값에 따라 초기 북마크 상태 설정
 
         const bookmarkImage = document.querySelector('.bookmark');
