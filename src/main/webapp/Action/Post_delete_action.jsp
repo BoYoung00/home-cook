@@ -1,6 +1,15 @@
+<!-- 최초 작성자 : 김보영 -->
+<!-- 최초 작성일 : 2023.11.11. -->
+<!-- 최초 변경일 : 2023.11.11. -->
+<!-- 목적 : 게시글 삭제 액션 -->
+<!-- 개정 이력 :
+김보영, 2023.11.11.(var. 01)
+-->
+<!-- 저작권 : 없음 -->
+
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="Post.PostDao" %>
-<%@ page import="Post.PostDto" %>
+<%@ page import="Post.*" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -16,10 +25,6 @@
         userID = (String) session.getAttribute("userID");
     }
 
-    // 게시글 내용 가져오기
-    PostDao postDao = new PostDao();
-    PostDto post = postDao.selectView(postId); // 게시글 값들 가져오기
-
     // 로그인이 안되어 있을 시
     if (userID == null ) {
         script.println("<script>");
@@ -29,14 +34,36 @@
         script.close();
     }
 
-    // 해당 게시글 작성자가 아닐 시
-    if (!userID.equals(post.getPostUserId())) {
-        script.println("<script>");
-        script.println("alert('권한이 없습니다.')");
-        script.println("history.back()");
-        script.println("</script>");
-        script.close();
-    } else {
+    // 게시글 내용 가져오기
+    PostDao postDao = new PostDao();
+    PostDto post = postDao.selectView(postId); // 게시글 값들 가져오기
+
+    // 해당 게시글 작성자이거나, 관리자일 때 삭제
+    if (userID.equals(post.getPostUserId()) || userID.equals("admin")) {
+        // 외래키로 연결된 데이터 모두 삭제
+        ReplyCommentDao replyCommentDao = new ReplyCommentDao();
+        CommentDao commentDao = new CommentDao();
+        BookmarkDao bookmarkDao = new BookmarkDao();
+
+        // 해당 게시글 번호로 대댓글 모두 불러와서 대댓글 삭제
+        List<CommentDto> comments = commentDao.selectCommentAll(postId);
+        for (CommentDto comment : comments) {
+            // 대댓글 모두 삭제
+            int replyDelete = replyCommentDao.replyCommentDelete(comment.getCommentId());
+            if (replyDelete > -1)
+                out.println("대댓글 삭제 완료");
+        }
+        // 댓글 모두 삭제
+        int commentDelete = commentDao.commentDelete(postId);
+        if (commentDelete > -1)
+            out.println("댓글 삭제 완료");
+
+        // 북마크 삭제
+        int bookmarkDelete = bookmarkDao.removeAllPostBookmark(postId);
+        if (bookmarkDelete > -1)
+            out.println("북마크 삭제 완료");
+
+        // 게시글 삭제하기
         int delete = postDao.postDelete(postId);
 
         if (delete == 1) {
@@ -52,5 +79,11 @@
             script.println("</script>");
             script.close();
         }
+    } else {
+        script.println("<script>");
+        script.println("alert('권한이 없습니다.')");
+        script.println("history.back()");
+        script.println("</script>");
+        script.close();
     }
 %>

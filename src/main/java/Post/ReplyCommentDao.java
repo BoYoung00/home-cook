@@ -31,7 +31,6 @@ public class ReplyCommentDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return -1;
     }
 
@@ -60,6 +59,21 @@ public class ReplyCommentDao {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // 해당 게시글 번호 대댓글 삭제
+    public int replyCommentDelete(int parentCommentId) {
+        String sql = "delete from replycomment where parentCommentId=?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, parentCommentId);
+
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public void dbClose() throws SQLException {

@@ -44,7 +44,6 @@ public class PostDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return count;
     }
 
@@ -52,21 +51,20 @@ public class PostDao {
     public List<PostDto> selectAll() {
         List<PostDto> list = new ArrayList<>();
 
-        String sql = "select * from post order by postId desc";
+        String sql = "SELECT postId, postUserId, title, content, createdAt, fileName, category from post order by postId desc";
 
         try {
             pstmt = conn.prepareStatement(sql);
-
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                int postId = rs.getInt(1);
-                String postUserId = rs.getString(2);
-                String title = rs.getString(3);
-                String content = rs.getString(4);
-                String createdAt = rs.getString(5);
-                String fileName = rs.getString(6);
-                String category = rs.getString(7);
+                int postId = rs.getInt("postId");
+                String postUserId = rs.getString("postUserId");
+                String title = rs.getString("title");
+                String content = rs.getString("content");
+                String createdAt = rs.getString("createdAt");
+                String fileName = rs.getString("fileName");
+                String category = rs.getString("category");
 
                 PostDto postDto = new PostDto(postId, postUserId, title, content, createdAt, fileName, category);
                 list.add(postDto);
@@ -81,7 +79,7 @@ public class PostDao {
     public List<PostDto> selectCategory(String inputCategory) {
         List<PostDto> list = new ArrayList<>();
 
-        String sql = "select * from post where category=? order by postId desc";
+        String sql = "select postId, postUserId, title, content, createdAt, fileName, category from post where category=? order by postId desc";
 
         try {
             pstmt = conn.prepareStatement(sql);
@@ -110,7 +108,7 @@ public class PostDao {
     public List<PostDto> selectUserPostAll(String userId) {
         List<PostDto> list = new ArrayList<>();
 
-        String sql = "select * from post where postUserId=? order by postId desc";
+        String sql = "select postId, postUserId, title, content, createdAt, fileName, category from post where postUserId=? order by postId desc";
 
         try {
             pstmt = conn.prepareStatement(sql);
@@ -140,7 +138,7 @@ public class PostDao {
     public List<PostDto> selectPostIdAll(int postID) {
         List<PostDto> list = new ArrayList<>();
 
-        String sql = "select * from post where postId=? order by postId desc";
+        String sql = "SELECT postId, postUserId, title, content, createdAt, fileName, category FROM post WHERE postId=? ORDER BY postId DESC";
 
         try {
             pstmt = conn.prepareStatement(sql);
@@ -194,7 +192,7 @@ public class PostDao {
         return null;
     }
 
-    // 게시글 삭제
+    // 해당 게시글 번호로 삭제
     public int postDelete(int postId) {
         String sql = "delete from post where postId=?";
 
@@ -206,7 +204,6 @@ public class PostDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return -1;
     }
 

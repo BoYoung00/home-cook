@@ -30,7 +30,6 @@ public class BookmarkDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return -1;
     }
 
@@ -47,7 +46,21 @@ public class BookmarkDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return -1;
+    }
 
+    // 해당 게시글 북마크 모두 지우기
+    public int removeAllPostBookmark(int postId) {
+        String sql = "DELETE FROM bookmark WHERE bookmark_post_id = ?";
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postId);
+
+            return pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return -1;
     }
 
@@ -93,17 +106,6 @@ public class BookmarkDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return false;
     }

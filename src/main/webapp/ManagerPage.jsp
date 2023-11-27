@@ -1,4 +1,8 @@
-<%--
+<%@ page import="User.UserDao" %>
+<%@ page import="java.util.List" %>
+<%@ page import="User.UserDto" %>
+<%@ page import="Post.PostDao" %>
+<%@ page import="Post.PostDto" %><%--
   Created by IntelliJ IDEA.
   User: qhdud
   Date: 2023-11-22
@@ -15,11 +19,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+    <link href="Default/CSS/ManagerPage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<%
+    // 회원 정보
+    UserDao userDao = new UserDao();
+    List<UserDto> users = userDao.selectUserAll();
+
+    // 게시글 정보
+    PostDao postDao = new PostDao();
+    List<PostDto> posts = postDao.selectAll();
+%>
 <div class="header">
     <img src="Default/img/logo.png" alt="">
-    <a href="Main.jsp">로그아웃</a>
+    <a href="Action/Logout_action.jsp">로그아웃</a>
 </div>
 <div class="sidetap">
     <input type="submit" value="회원 관리" id="Button1" class="ok_button" onclick="showSection('userlist')">
@@ -27,7 +41,6 @@
 </div>
 <div class="userlist" id="userlist">
     <h2>회원 목록</h2>
-    <p><input type="submit" value="저장" class="save" class="ok_button"></p>
     <br>
     <br>
     <table>
@@ -38,26 +51,18 @@
             <th>ID</th>
             <th>비밀번호</th>
             <th>비고</th>
-            <th>삭제</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>이주연</td>
-            <td>LY115@naver.com</td>
-            <td>jy980115</td>
-            <td>junyang98</td>
-            <td></td>
-            <td><input type="submit" value="삭제" class="delete" class="ok_button"></td>
-        </tr>
-        <tr>
-            <td>김방전</td>
-            <td>yosinori@naver.com</td>
-            <td>yosi515</td>
-            <td>yotnyang00</td>
-            <td></td>
-            <td><input type="submit" value="삭제" class="delete" class="ok_button"></td>
-        </tr>
+        <% for(UserDto user : users) { %>
+            <tr>
+                <td><%= user.getUserName() %></td>
+                <td><%= user.getUserMail() %></td>
+                <td><%= user.getUserID() %></td>
+                <td><%= user.getUserPasswerd() %></td>
+                <td></td>
+            </tr>
+        <% } %>
         </tbody>
     </table>
     <br>
@@ -66,7 +71,6 @@
 
 <div class="postlist" id="postlist">
     <h2>게시물 목록</h2>
-    <p><input type="submit" value="저장" class="save" class="ok_button"></p>
     <br>
     <br>
     <table>
@@ -81,28 +85,27 @@
         </tr>
         </thead>
         <tbody>
+        <% for(PostDto post : posts) { %>
         <tr>
-            <td>김치볶음밥</td>
-            <td>이주연</td>
-            <td>1998-01-15</td>
-            <td>식사</td>
+            <td onclick="location='Post_view.jsp?no=<%= post.getPostId() %>'" style="cursor: pointer; color: blue"><%= post.getTitle() %></td>
+            <td><%= post.getPostUserId() %></td>
+            <td><%= post.getCreatedAt() %></td>
+            <td><%= post.getCategory() %></td>
             <td></td>
-            <td><input type="submit" value="삭제" class= "delete" class="ok_button"></td>
+            <td>
+                <!-- 삭제 버튼 -->
+                <form action="Action/Manager_post_delete_action.jsp" method="post" id="deleteForm">
+                    <input type="hidden" name="postId" value="<%= post.getPostId() %>">
+                    <input type="button" value="삭제" class="delete ok_button" onclick="confirmDelete()">
+                </form>
+            </td>
         </tr>
-        <tr>
-            <td>타코야키</td>
-            <td>김방전</td>
-            <td>2000-05-15</td>
-            <td>식사</td>
-            <td></td>
-            <td><input type="submit" value="삭제" class= "delete" class="ok_button"></td>
-        </tr>
+        <% } %>
         </tbody>
     </table>
     <br>
     <br>
 </div>
-
 
 <script>
     function showSection(sectionId) {
@@ -113,73 +116,18 @@
         // 클릭한 버튼에 해당하는 섹션을 표시합니다.
         document.getElementById(sectionId).style.display = 'block';
     }
+
+    // 삭제 여부
+    function confirmDelete() {
+        if (confirm('정말로 삭제하시겠습니까?')) {
+            submitForm();
+        }
+    }
+
+    function submitForm() {
+        document.getElementById('deleteForm').submit();
+    }
 </script>
-
-<style>
-    .save{
-        width: 100px; height: 40px;
-        float: right;
-        margin-right: 50px;
-    }
-    .delete{
-        width: 150px; height: 50px;
-    }
-    #Button1, #Button2{
-        width: 250px; height: 60px;
-        margin-top: 10px;
-        margin-left: 15px;
-    }
-    img{
-        width: 200px;
-        height: 90px;
-        margin-left: 10px;
-    }
-    a{
-        float: right;
-        margin-top: 40px;
-    }
-    .header{
-        padding-right: 30px;
-    }
-    .sidetap{
-        width: 280px; height: 600px;
-        border: 1px solid black;
-        display: inline;
-        float: left;
-        margin-left: 10px;
-    }
-    .postlist{
-        border: 1px solid black;
-        width: 1200px;
-        margin-left: 300px;
-        display: none;
-
-    }
-    .userlist{
-        border: 1px solid black;
-        width: 1200px;
-        margin-left: 300px;
-    }
-    h2{
-        font-size: 30px;
-        margin-left: 40px;
-    }
-    *{
-        font-size: 20px;
-        font-family: 'Hi Melody', sans-serif;
-
-    }
-    th, td{
-        padding: 5px 5px 5px 10px;
-        border: 1px solid black;
-        text-align: center;
-    }
-    table{
-        margin: auto;
-        border: 1px solid black;
-        width: 1100px;
-    }
-</style>
 
 </body>
 </html>

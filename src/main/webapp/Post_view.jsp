@@ -100,7 +100,6 @@
                 <section class="reply">
                     <% for(CommentDto comment : commentList) {
                         String userId = comment.getUserId(); // 작성자 아이디
-                        String createdAt = comment.getCreatedAt(); // 만든 일자
                         String text = comment.getCommentText(); // 댓글 내용
                         int commentId = comment.getCommentId(); // 댓글 번호
 
@@ -171,8 +170,8 @@
             }
         }
 
+        // 북마크
         let isBookmarked = <%= isBookmarked %>; // isBookmarked 값에 따라 초기 북마크 상태 설정
-
         const bookmarkImage = document.querySelector('.bookmark');
 
         function changeBookmark(postId) {
@@ -212,7 +211,7 @@
             var postUserId = '<%= post.getPostUserId() %>';
             var editButtons = document.querySelectorAll('.corre, .delete');
 
-            if (loginUserId === postUserId) {
+            if (loginUserId === postUserId) { // || loginUserId == "admin"
                 for (var i = 0; i < editButtons.length; i++) {
                     editButtons[i].style.display = 'inline';
                 }

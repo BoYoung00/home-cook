@@ -31,7 +31,6 @@ public class CommentDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return -1;
     }
 
@@ -60,6 +59,21 @@ public class CommentDao {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // 해당 게시글 번호 댓글 삭제
+    public int commentDelete(int postId) {
+        String sql = "delete from comment where postId=?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postId);
+
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public void dbClose() throws SQLException {
