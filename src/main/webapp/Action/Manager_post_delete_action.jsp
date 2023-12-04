@@ -11,6 +11,7 @@
 <%@ page import="User.UserDao" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Post.*" %>
+<%@ page import="java.io.File" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     request.setCharacterEncoding("UTF-8");
@@ -37,6 +38,7 @@
     CommentDao commentDao = new CommentDao();
     BookmarkDao bookmarkDao = new BookmarkDao();
     PostDao postDao = new PostDao();
+    PostDto post = postDao.selectView(postId); // 게시글 값들 가져오기
 
     // 해당 게시글 번호로 대댓글 모두 불러와서 대댓글 삭제
     List<CommentDto> comments = commentDao.selectCommentAll(postId);
@@ -56,15 +58,17 @@
     if (bookmarkDelete > -1)
         out.println("북마크 삭제 완료");
 
+    // 실제 폴더에 있는 이미지 파일 삭제
+    File oldFile = new File(request.getServletContext().getRealPath(post.getFileName()));
+
     // 게시글 삭제
     int delete = postDao.postDelete(postId);
 
     if (delete == 1) {
         script.println("<script>");
         script.println("alert('게시글 삭제가 완료되었습니다.')");
+        script.println("location.href='../ManagerPage.jsp'");
         script.println("</script>");
-        // 관리자 페이지로 리다이렉트
-        response.sendRedirect("../ManagerPage.jsp");
         script.close();
     } else {
         script.println("<script>");
@@ -73,6 +77,9 @@
         script.println("</script>");
         script.close();
     }
-
-
+    // 이미지 파일 삭제
+    if(delete > 0 && oldFile.exists()) {
+        System.out.println(oldFile.getAbsolutePath());
+        oldFile.delete();
+    }
 %>

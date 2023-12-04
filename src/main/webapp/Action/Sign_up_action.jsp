@@ -23,9 +23,9 @@
     UserDao dao = new UserDao();
     UserDto dto = new UserDto(id, password, name, email);
 
-    List<UserDto> list = dao.selete(id);
+    List<UserDto> list = dao.selectUser(id);
 
-    if (list.isEmpty()) {
+    if (list.isEmpty() || list == null) {
 
         int insert = dao.insert(dto);
 

@@ -10,6 +10,7 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="Post.*" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.io.File" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -63,6 +64,9 @@
         if (bookmarkDelete > -1)
             out.println("북마크 삭제 완료");
 
+        // 실제 폴더에 있는 이미지 파일 삭제
+        File oldFile = new File(request.getServletContext().getRealPath(post.getFileName()));
+
         // 게시글 삭제하기
         int delete = postDao.postDelete(postId);
 
@@ -78,6 +82,12 @@
             script.println("history.back()");
             script.println("</script>");
             script.close();
+        }
+
+        // 이미지 파일 삭제
+        if(delete > 0 && oldFile.exists()) {
+            System.out.println(oldFile.getAbsolutePath());
+            oldFile.delete();
         }
     } else {
         script.println("<script>");

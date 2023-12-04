@@ -87,7 +87,7 @@ public class UserDao {
     public List<UserDto> selectUser(String userId) {
         List<UserDto> list = new ArrayList<>();
 
-        String sql = "select (userId, userPassword, userName, userEmail) from user where userId=?";
+        String sql = "select userId, userPassword, userName, userEmail from user where userId=?";
 
         try {
             pstmt = conn.prepareStatement(sql);

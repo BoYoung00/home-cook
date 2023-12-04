@@ -67,7 +67,7 @@
 
 <!-- 포스팅 영역 -->
 <div class="posting_area">
-    <form action="Action/Post_update_action.jsp?postId=<%=post.getPostId()%>" method="post" enctype="multipart/form-data">
+    <form action="Action/Post_update_action.jsp?postId=<%=post.getPostId()%>" method="post" enctype="multipart/form-data" id="postingForm">
         <h1 style="text-align: center; margin-bottom: 50px;">글 수정</h1>
         <select name="category" id="category">
             <option value="food">식사</option>

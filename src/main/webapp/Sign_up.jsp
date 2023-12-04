@@ -21,17 +21,17 @@
 </head>
 <body>
 <div class="Sign_up_page">
-  <img src="img/logo.png">
+  <img src="Default/img/logo.png">
   <p>회 원 가 입</p>
   <form action="Action/Sign_up_action.jsp" method="post">
     <input type="text" class="signup_text" id="name" name="name" placeholder="  이름을 입력해주세요." size="50" required
-           oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
+           oninvalid="this.setCustomValidity('올바른 이름을 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
 
     <input type="text" class="signup_text" id="email" name="email" placeholder="  이메일을 입력해주세요." size="50" required
-           oninvalid="this.setCustomValidity('올바른 이메일을 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
+           oninvalid="this.setCustomValidity('유효한 이메일을 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
 
     <input type="text" class="signup_text" id="id" name="id" placeholder="  아이디를 입력해주세요." size="20" required
-           oninvalid="this.setCustomValidity('아이디를 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
+           oninvalid="this.setCustomValidity('올바른 아이디를 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
 
     <input type="password" class="signup_text" id="password" name="password" placeholder="  비밀번호를 입력해주세요." size="20" required
            oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')"><br/>
