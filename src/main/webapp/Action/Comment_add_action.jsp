@@ -34,7 +34,6 @@
     CommentDao commentDao = new CommentDao();
 
     int insert = commentDao.insertComment(postId, userId, commentText);
-    System.out.print(insert);
 
     if (insert == 1) {
       script.println("<script>");

@@ -61,7 +61,48 @@ public class CommentDao {
         return list;
     }
 
-    // 해당 게시글 번호 댓글 삭제
+    // 해당 댓글 정보 가져오기
+    public CommentDto selectComment(int CommentId) {
+        CommentDto commentDto = null;
+
+        String sql = "SELECT commentId, postId, userId, commentText, createdAt FROM comment WHERE commentId = ?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, CommentId);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int commentId = CommentId;
+                int CommentPostId = rs.getInt(2);
+                String userId = rs.getString(3);
+                String commentText = rs.getString(4);
+                String createdAt = rs.getString(5);
+
+                commentDto = new CommentDto(commentId, CommentPostId, userId, commentText, createdAt);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return commentDto;
+    }
+
+    // 해당 댓글 번호로 댓글 삭제
+    public int deleteCommentId(int commentId) {
+        String sql = "delete from comment where commentId=?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, commentId);
+
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    // 해당 게시글 번호 댓글 모두 삭제
     public int commentDelete(int postId) {
         String sql = "delete from comment where postId=?";
 

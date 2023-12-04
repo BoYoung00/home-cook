@@ -77,7 +77,7 @@
                 <!-- 수정 삭제 버튼 -->
                 <span id="corre_delete">
                     <a href="Post_update.jsp?postId=<%=postId%>" id="myButton1" class="corre" style="display: none;">수정</a>
-                    <a href="#" onclick="confirmDelete(<%=postId%>)" id="myButton2" class="delete" style="display: none;">삭제</a>
+                    <a href="#" onclick="confirmPostDelete(<%=postId%>)" id="myButton2" class="delete" style="display: none;">삭제</a>
                 </span>
             </section>
             <!-- 본문내용 -->
@@ -87,7 +87,6 @@
             </section>
             <!-- 북마크 -->
             <img class="bookmark" id="bookmark" src="<%= isBookmarked ? "Default/img/bookmark_B.png" : "Default/img/bookmark_W.png" %>" onclick="changeBookmark('<%= postId %>')" style="cursor: pointer;" onclick="changeBookmark(<%= postId %>)">
-<%--            <img class="bookmark" src="Default/img/bookmark_B.png" style="display: none;" onclick="changeBookmark(<%= postId %>)">--%>
 
             <!-- 댓글란 -->
             <section class="comments">
@@ -110,6 +109,9 @@
                             <span class="content_name"><%= commentUserName %></span>
                             <span id="content"><%= text %></span>
                             <br>
+                            <% if (loginUserId != null && loginUserId.equals(userId)) { %>
+                            <a href="#" onclick="confirmCommentDelete(<%= commentId %>)" style="font-size: 14px; position: absolute; right: 70px; top: 0;">삭제 / </a>
+                            <% } %>
                             <span onclick="toggleCommentBox(<%= commentId %>)" id="reply_but">대댓글 작성</span>
                         </div>
                         <form class="commentForm" id="commentbox-<%= commentId %>" action="Action/Reply_add_action.jsp" method="post" style="display: none; margin-right: 10px;">
@@ -128,7 +130,11 @@
                                 <p>
                                     <span class="content_name"> └ <%= replyUserName %> </span>
                                     <span class=""><%= reply.getReplyText() %></span>
+                                    <% if (loginUserId != null && loginUserId.equals(reply.getUserId()) ) { %>
+                                    <a href="#" onclick="confirmReplyDelete(<%= reply.getReplyId() %>)" style="font-size: 14px; float: right; padding-right: 10px; ">삭제 </a>
+                                    <% } %>
                                 </p>
+
                             <% } // reply for %>
                         </div>
                     <% } // comment for %>
@@ -163,10 +169,22 @@
             }
         }
 
-        // 삭제 여부
-        function confirmDelete(postId) {
+        // 게시글 삭제 여부
+        function confirmPostDelete(postId) {
             if (confirm("정말 삭제하시겠습니까?")) {
                 window.location.href = "Action/Post_delete_action.jsp?postId=" + postId;
+            }
+        }
+        // 댓글 삭제 여부
+        function confirmCommentDelete(commentId) {
+            if (confirm("정말 삭제하시겠습니까?")) {
+                window.location.href = "Action/Comment_remove_action.jsp?commentId=" + commentId;
+            }
+        }
+        // 대댓글 삭제 여부
+        function confirmReplyDelete(replyId) {
+            if (confirm("정말 삭제하시겠습니까?")) {
+                window.location.href = "Action/Reply_remove_action.jsp?replyId=" + replyId;
             }
         }
 
@@ -217,6 +235,17 @@
                 }
             }
         }
+
+        // 댓글 작성자 아이디와 로그인 아이디가 같으면 보이도록 설정
+        function showEditCommentButtons(t) {
+            var loginUserId = '<%= loginUserId %>';
+
+
+            if (commentUserId === loginUserId) { // || loginUserId == "admin"
+                editButtons.style.display = 'inline';
+            }
+        }
+
         // Main
         showEditButtons();
     </script>

@@ -37,6 +37,13 @@
     // 로그인 섹션
     String userID = (String) session.getAttribute("userID");
 
+    // 실제 폴더에 있는 이미지 파일 삭제
+    String oldFileName = (String) multi.getParameter("oldFileName");
+    File oldFile = new File(request.getServletContext().getRealPath(oldFileName));
+    File newFile = new File(request.getServletContext().getRealPath(fileName));
+    String oldF = oldFile.getAbsolutePath();
+    String newF = newFile.getAbsolutePath();
+
     if (title.isEmpty() || content.isEmpty()) {
         script.println("<script>");
         script.println("alert('입력이 안된 사항이 있습니다.')");
@@ -50,6 +57,10 @@
     int updateResult = dao.postUpdate(postId, title, content, fileName, category);
 
     if (updateResult == 1) {
+        if(oldFile.exists() && !oldF.equals(newF)) {
+            //System.out.println(oldFile.getAbsolutePath());
+            oldFile.delete();
+        }
         script.println("<script>");
         script.println("alert('글 수정이 완료되었습니다.')");
         script.println("location.href='../Post_list.jsp?category=" + category + "'");
@@ -62,14 +73,4 @@
         script.println("</script>");
         script.close();
     }
-
-    // 실제 폴더에 있는 이미지 파일 삭제
-    String oldFileName = (String) multi.getParameter("oldFileName");
-
-    File oldFile = new File(request.getServletContext().getRealPath(oldFileName));
-    if(updateResult > 0 && oldFile.exists()) {
-        System.out.println(oldFile.getAbsolutePath());
-        oldFile.delete();
-    }
-
 %>

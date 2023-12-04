@@ -52,17 +52,17 @@
             // 대댓글 모두 삭제
             int replyDelete = replyCommentDao.replyCommentDelete(comment.getCommentId());
             if (replyDelete > -1)
-                out.println("대댓글 삭제 완료");
+                System.out.println("대댓글 삭제 완료");
         }
         // 댓글 모두 삭제
         int commentDelete = commentDao.commentDelete(postId);
         if (commentDelete > -1)
-            out.println("댓글 삭제 완료");
+            System.out.println("댓글 삭제 완료");
 
         // 북마크 삭제
         int bookmarkDelete = bookmarkDao.removeAllPostBookmark(postId);
         if (bookmarkDelete > -1)
-            out.println("북마크 삭제 완료");
+            System.out.println("북마크 삭제 완료");
 
         // 실제 폴더에 있는 이미지 파일 삭제
         File oldFile = new File(request.getServletContext().getRealPath(post.getFileName()));
@@ -86,7 +86,7 @@
 
         // 이미지 파일 삭제
         if(delete > 0 && oldFile.exists()) {
-            System.out.println(oldFile.getAbsolutePath());
+            //System.out.println(oldFile.getAbsolutePath());
             oldFile.delete();
         }
     } else {

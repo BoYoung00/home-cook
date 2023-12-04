@@ -49,7 +49,7 @@
 
 <!-- 페이지 상단부  -->
 <div class="title">
-    <h1>식사 레시피 목록</h1>
+    <h1><%= inputCategory %> 레시피 목록</h1>
     <p><input type="button" value="글 작성하기" id= "myButton" class="ok_button" onclick="location='Posting_page.jsp?category=<%= inputCategory %>'"></p>
 </div>
 

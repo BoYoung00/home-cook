@@ -9,14 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/11/27 관리자 페이지 구현 완료, 전체적으로 살짝 수정">
+    <list default="true" id="e8ea5117-6863-48d1-ae79-a290b014add4" name="Changes" comment="23/12/04 디버깅 테스트">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Action/Comment_remove_action.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Action/Reply_remove_action.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/User/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Post/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Post/CommentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Post/ReplyCommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Post/ReplyCommentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Action/Comment_add_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Comment_add_action.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Action/Manager_post_delete_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Manager_post_delete_action.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Action/Post_delete_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Post_delete_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Action/Sign_up_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Sign_up_action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_update.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Sign_up.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Sign_up.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Action/Post_update_action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Action/Post_update_action.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Post_view.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Default/CSS/Post_view.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Post_view.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +33,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Jsp File" />
         <option value="CSS File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -227,7 +233,7 @@
       <workItem from="1701245717936" duration="609000" />
       <workItem from="1701393326741" duration="601000" />
       <workItem from="1701648754628" duration="3472000" />
-      <workItem from="1701652471245" duration="1347000" />
+      <workItem from="1701652471245" duration="12045000" />
     </task>
     <task id="LOCAL-00001" summary="23/10/26 중간평가 마무리">
       <created>1698251725508</created>
@@ -313,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701070389481</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="23/12/04 디버깅 테스트">
+      <created>1701654418062</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701654418062</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +358,7 @@
     <MESSAGE value="23/11/13 게시글 뷰 UI 구현완료" />
     <MESSAGE value="23/11/20 게시물 북마크 구현 완료" />
     <MESSAGE value="23/11/27 관리자 페이지 구현 완료, 전체적으로 살짝 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="23/11/27 관리자 페이지 구현 완료, 전체적으로 살짝 수정" />
+    <MESSAGE value="23/12/04 디버깅 테스트" />
+    <option name="LAST_COMMIT_MESSAGE" value="23/12/04 디버깅 테스트" />
   </component>
 </project>

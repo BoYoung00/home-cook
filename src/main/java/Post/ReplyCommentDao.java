@@ -61,8 +61,64 @@ public class ReplyCommentDao {
         return list;
     }
 
+    // 해당 댓글 정보 가져오기
+    public ReplyCommentDto selectReply(int replyId) {
+        ReplyCommentDto replyDto = null;
+
+        String sql = "SELECT replyId, parentCommentId, userId, replyText, createdAt FROM replycomment WHERE replyId = ?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, replyId);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int replyID = replyId;
+                int parentCommentId = rs.getInt(2);
+                String userId = rs.getString(3);
+                String replyText = rs.getString(4);
+                String createdAt = rs.getString(5);
+
+                replyDto = new ReplyCommentDto(replyID, parentCommentId, userId, replyText, createdAt);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return replyDto;
+    }
+
     // 해당 게시글 번호 대댓글 삭제
     public int replyCommentDelete(int parentCommentId) {
+        String sql = "delete from replycomment where parentCommentId=?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, parentCommentId);
+
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    // 해당 대댓글 번호로 댓글 삭제
+    public int replyIdDelete(int replyId) {
+        String sql = "delete from replycomment where replyId=?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, replyId);
+
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    // 해당 댓글 번호로 댓글 삭제
+    public int parentCommentIdIdDelete(int parentCommentId) {
         String sql = "delete from replycomment where parentCommentId=?";
 
         try {
